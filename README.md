@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Invoice Processor
 
 [![CI Status](https://github.com/yourusername/invoice-processor/workflows/CI/badge.svg)](https://github.com/yourusername/invoice-processor/actions)
@@ -114,3 +115,6 @@ The system supports the complete Spanish invoice schema, including:
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details. 
+=======
+# Invoice_Manager
+>>>>>>> 862bcdfd7e2ae7bc10cc203509d7cf2c06f2cc65
