@@ -1,0 +1,340 @@
+2025-05-08 15:12:06 - src.utils.cfg - WARNING - Config file not found: config.yaml
+2025-05-08 15:12:06 - src.utils.cfg - WARNING - Using default configuration
+2025-05-08 15:12:06 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 15:12:06 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 15:12:06 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-ocr-base-spa
+2025-05-08 15:12:06 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 15:12:06 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 15:12:06 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 15:12:06 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 15:12:27 - src.utils.cfg - WARNING - Config file not found: config.yaml
+2025-05-08 15:12:27 - src.utils.cfg - WARNING - Using default configuration
+2025-05-08 15:12:27 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 15:12:27 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 15:12:27 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-ocr-base-spa
+2025-05-08 15:12:27 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 15:12:27 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 15:12:27 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 15:12:27 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 15:12:27 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 15:12:27 - src.main - INFO - Invoice Processor initialized
+2025-05-08 15:12:27 - src.main - INFO - Processing invoice: Invoice_manager/invoices/invoice-5.pdf
+2025-05-08 15:12:27 - src.preprocessing.image_processor - INFO - Processing file: Invoice_manager/invoices/invoice-5.pdf
+2025-05-08 15:12:32 - src.preprocessing.image_processor - INFO - Processed 2 images
+2025-05-08 15:12:32 - src.ocr.mistral_wrapper - ERROR - Error running Mistral OCR: 4 validation errors for Unmarshaller
+body.ImageURLChunk.image_url
+  Field required [type=missing, input_value={'type': 'document_base64...GZ1gAAAABJRU5ErkJggg=='}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+body.ImageURLChunk.type
+  Input should be 'image_url' [type=literal_error, input_value='document_base64', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+body.DocumentURLChunk.document_url
+  Field required [type=missing, input_value={'type': 'document_base64...GZ1gAAAABJRU5ErkJggg=='}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+body.DocumentURLChunk.type
+  Input should be 'document_url' [type=literal_error, input_value='document_base64', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/literal_error
+2025-05-08 15:14:39 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 15:14:39 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 15:14:39 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 15:14:39 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 15:14:39 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 15:14:39 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 15:14:39 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 15:14:39 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 15:14:39 - src.main - INFO - Invoice Processor initialized
+2025-05-08 15:14:39 - src.main - INFO - Processing invoice: Invoice_manager/invoices/invoice-5.pdf
+2025-05-08 15:14:39 - src.preprocessing.image_processor - INFO - Processing file: Invoice_manager/invoices/invoice-5.pdf
+2025-05-08 15:14:43 - src.preprocessing.image_processor - INFO - Processed 2 images
+2025-05-08 15:14:43 - src.ocr.mistral_wrapper - ERROR - Error running Mistral OCR: 'Chat' object has no attribute 'completions'
+2025-05-08 15:15:51 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 15:15:51 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 15:15:51 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 15:15:51 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 15:15:51 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 15:15:51 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 15:15:51 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 15:15:51 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 15:15:51 - src.main - INFO - Invoice Processor initialized
+2025-05-08 15:15:51 - src.main - INFO - Processing invoice: Invoice_manager/invoices/invoice-5.pdf
+2025-05-08 15:15:51 - src.preprocessing.image_processor - INFO - Processing file: Invoice_manager/invoices/invoice-5.pdf
+2025-05-08 15:15:56 - src.preprocessing.image_processor - INFO - Processed 2 images
+2025-05-08 15:15:56 - src.ocr.mistral_wrapper - ERROR - Error running Mistral OCR: 'Chat' object is not callable
+2025-05-08 15:17:32 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 15:17:32 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 15:17:32 - src.ocr.mistral_wrapper - INFO - Initialized OCR processor with language: spa
+2025-05-08 15:17:32 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 15:17:32 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 15:17:32 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 15:17:32 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 15:17:32 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 15:17:32 - src.main - INFO - Invoice Processor initialized
+2025-05-08 15:17:32 - src.main - INFO - Processing invoice: Invoice_manager/invoices/invoice-5.pdf
+2025-05-08 15:17:32 - src.preprocessing.image_processor - INFO - Processing file: Invoice_manager/invoices/invoice-5.pdf
+2025-05-08 15:17:37 - src.preprocessing.image_processor - INFO - Processed 2 images
+2025-05-08 15:17:37 - src.ocr.mistral_wrapper - INFO - Using Tesseract for OCR processing of /var/folders/fx/4kbh4g_n0r3_62xbr48xwgwc0000gn/T/tmpryyqf1o3.png
+2025-05-08 15:17:39 - src.ocr.mistral_wrapper - INFO - Processed 225 words with Tesseract
+2025-05-08 15:17:41 - src.ocr.tesseract_fallback - INFO - Tesseract OCR processed 225 words with average confidence: 0.94
+2025-05-08 15:17:41 - src.ocr.confidence_merger - INFO - Using fallback OCR results (conf: 0.94 > 0.90)
+2025-05-08 15:17:41 - src.ocr.mistral_wrapper - INFO - Using Tesseract for OCR processing of /var/folders/fx/4kbh4g_n0r3_62xbr48xwgwc0000gn/T/tmpsp68q6gi.png
+2025-05-08 15:17:43 - src.ocr.mistral_wrapper - INFO - Processed 204 words with Tesseract
+2025-05-08 15:17:44 - src.ocr.tesseract_fallback - INFO - Tesseract OCR processed 204 words with average confidence: 0.94
+2025-05-08 15:17:44 - src.ocr.confidence_merger - INFO - Using fallback OCR results (conf: 0.94 > 0.90)
+2025-05-08 15:17:48 - src.extraction.field_locator - INFO - Extracted 5 invoice fields
+2025-05-08 15:17:48 - src.extraction.openai_refiner - INFO - Refining extracted fields with OpenAI
+2025-05-08 15:17:52 - src.extraction.openai_refiner - INFO - OpenAI refinement complete, extracted 15 fields
+2025-05-08 15:17:52 - src.validation.schema_validator - INFO - Validating extracted invoice data against schema
+2025-05-08 15:17:52 - src.validation.schema_validator - ERROR - Schema validation failed: vendor_tax_id - 'Unknown' does not match '^[A-Z0-9]\\d{7}[A-Z0-9]$'
+2025-05-08 15:18:33 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 15:18:33 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 15:18:33 - src.ocr.mistral_wrapper - INFO - Initialized OCR processor with language: spa
+2025-05-08 15:18:33 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 15:18:33 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 15:18:33 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 15:18:33 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 15:18:33 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 15:18:33 - src.main - INFO - Invoice Processor initialized
+2025-05-08 15:18:33 - src.main - INFO - Processing invoice: Invoice_manager/invoices/invoice-5.pdf
+2025-05-08 15:18:33 - src.preprocessing.image_processor - INFO - Processing file: Invoice_manager/invoices/invoice-5.pdf
+2025-05-08 15:18:37 - src.preprocessing.image_processor - INFO - Processed 2 images
+2025-05-08 15:18:37 - src.ocr.mistral_wrapper - INFO - Using Tesseract for OCR processing of /var/folders/fx/4kbh4g_n0r3_62xbr48xwgwc0000gn/T/tmppl0bpmwt.png
+2025-05-08 15:18:39 - src.ocr.mistral_wrapper - INFO - Processed 225 words with Tesseract
+2025-05-08 15:18:41 - src.ocr.tesseract_fallback - INFO - Tesseract OCR processed 225 words with average confidence: 0.94
+2025-05-08 15:18:41 - src.ocr.confidence_merger - INFO - Using fallback OCR results (conf: 0.94 > 0.90)
+2025-05-08 15:18:41 - src.ocr.mistral_wrapper - INFO - Using Tesseract for OCR processing of /var/folders/fx/4kbh4g_n0r3_62xbr48xwgwc0000gn/T/tmpc64dc6gd.png
+2025-05-08 15:18:43 - src.ocr.mistral_wrapper - INFO - Processed 204 words with Tesseract
+2025-05-08 15:18:45 - src.ocr.tesseract_fallback - INFO - Tesseract OCR processed 204 words with average confidence: 0.94
+2025-05-08 15:18:45 - src.ocr.confidence_merger - INFO - Using fallback OCR results (conf: 0.94 > 0.90)
+2025-05-08 15:18:48 - src.extraction.field_locator - INFO - Extracted 5 invoice fields
+2025-05-08 15:18:48 - src.extraction.openai_refiner - INFO - Refining extracted fields with OpenAI
+2025-05-08 15:18:52 - src.extraction.openai_refiner - INFO - OpenAI refinement complete, extracted 15 fields
+2025-05-08 15:18:52 - src.validation.schema_validator - INFO - Validating extracted invoice data against schema
+2025-05-08 15:18:52 - src.validation.schema_validator - ERROR - Schema validation failed: vendor_tax_id - 'N/A' does not match '^[A-Z0-9]\\d{7}[A-Z0-9]$'
+2025-05-08 15:18:52 - src.main - INFO - Successfully processed invoice: Invoice_manager/invoices/invoice-5.pdf
+2025-05-08 15:18:52 - src.export.writers - INFO - Exported invoice data to JSON: output/invoice-5_result.json
+2025-05-08 17:26:53 - Invoice_manager.src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 17:26:53 - Invoice_manager.src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 17:26:53 - Invoice_manager.src.ocr.mistral_wrapper - ERROR - Error in Mistral OCR API call: 'Chat' object is not callable
+2025-05-08 17:26:54 - Invoice_manager.src.ocr.mistral_wrapper - INFO - Using Tesseract fallback for OCR processing of invoices/invoice-5.pdf
+2025-05-08 17:26:55 - Invoice_manager.src.ocr.mistral_wrapper - ERROR - Error running Tesseract fallback OCR: cannot identify image file 'invoices/invoice-5.pdf'
+2025-05-08 17:26:55 - Invoice_manager.src.ocr.mistral_wrapper - ERROR - Error running Mistral OCR: OCR processing failed: cannot identify image file 'invoices/invoice-5.pdf'
+2025-05-08 17:27:41 - Invoice_manager.src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 17:27:41 - Invoice_manager.src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 17:27:41 - Invoice_manager.src.ocr.mistral_wrapper - ERROR - Error in Mistral OCR API call: 'Chat' object is not callable
+2025-05-08 17:27:41 - Invoice_manager.src.ocr.mistral_wrapper - INFO - Using Tesseract fallback for OCR processing of invoices/invoice-5.pdf
+2025-05-08 17:27:41 - Invoice_manager.src.ocr.mistral_wrapper - ERROR - Error running Tesseract fallback OCR: cannot identify image file 'invoices/invoice-5.pdf'
+2025-05-08 17:27:41 - Invoice_manager.src.ocr.mistral_wrapper - ERROR - Error running Mistral OCR: OCR processing failed: cannot identify image file 'invoices/invoice-5.pdf'
+2025-05-08 17:27:50 - Invoice_manager.src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 17:27:50 - Invoice_manager.src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 17:27:50 - Invoice_manager.src.ocr.mistral_wrapper - ERROR - Error in Mistral OCR API call: 'Chat' object is not callable
+2025-05-08 17:27:50 - Invoice_manager.src.ocr.mistral_wrapper - INFO - Using Tesseract fallback for OCR processing of invoices/invoice-5.pdf
+2025-05-08 17:27:50 - Invoice_manager.src.ocr.mistral_wrapper - ERROR - Error running Tesseract fallback OCR: cannot identify image file 'invoices/invoice-5.pdf'
+2025-05-08 17:27:50 - Invoice_manager.src.ocr.mistral_wrapper - ERROR - Error running Mistral OCR: OCR processing failed: cannot identify image file 'invoices/invoice-5.pdf'
+2025-05-08 17:36:00 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 17:36:00 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 17:36:00 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 17:36:00 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 17:36:00 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 17:36:00 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 17:36:00 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 17:36:00 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 17:36:00 - src.main - INFO - Invoice Processor initialized
+2025-05-08 17:36:41 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 17:36:41 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 17:36:41 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 17:36:41 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 17:36:41 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 17:36:41 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 17:36:41 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 17:36:41 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 17:36:41 - Invoice_manager.src.main - INFO - Invoice Processor initialized
+2025-05-08 17:36:41 - Invoice_manager.src.main - INFO - Processing invoice: invoices/invoice-5.pdf
+2025-05-08 17:36:41 - src.preprocessing.image_processor - INFO - Processing file: invoices/invoice-5.pdf
+2025-05-08 17:36:45 - src.preprocessing.image_processor - INFO - Processed 2 images
+2025-05-08 17:36:45 - src.ocr.mistral_wrapper - ERROR - Error in Mistral OCR API call: 'Chat' object is not callable
+2025-05-08 17:36:45 - src.ocr.mistral_wrapper - INFO - Using Tesseract fallback for OCR processing of /var/folders/fx/4kbh4g_n0r3_62xbr48xwgwc0000gn/T/tmpp7vdck1w.png
+2025-05-08 17:36:47 - src.ocr.mistral_wrapper - INFO - Processed 225 words with Tesseract fallback
+2025-05-08 17:36:48 - src.ocr.tesseract_fallback - INFO - Tesseract OCR processed 225 words with average confidence: 0.94
+2025-05-08 17:36:48 - src.ocr.confidence_merger - INFO - Using fallback OCR results (conf: 0.94 > 0.90)
+2025-05-08 17:36:48 - src.ocr.mistral_wrapper - ERROR - Error in Mistral OCR API call: 'Chat' object is not callable
+2025-05-08 17:36:48 - src.ocr.mistral_wrapper - INFO - Using Tesseract fallback for OCR processing of /var/folders/fx/4kbh4g_n0r3_62xbr48xwgwc0000gn/T/tmpz2sqp74s.png
+2025-05-08 17:36:49 - src.ocr.mistral_wrapper - INFO - Processed 204 words with Tesseract fallback
+2025-05-08 17:36:51 - src.ocr.tesseract_fallback - INFO - Tesseract OCR processed 204 words with average confidence: 0.94
+2025-05-08 17:36:51 - src.ocr.confidence_merger - INFO - Using fallback OCR results (conf: 0.94 > 0.90)
+2025-05-08 17:36:54 - src.extraction.field_locator - INFO - Extracted 5 invoice fields
+2025-05-08 17:36:54 - src.extraction.openai_refiner - INFO - Refining extracted fields with OpenAI
+2025-05-08 17:36:59 - src.extraction.openai_refiner - INFO - OpenAI refinement complete, extracted 15 fields
+2025-05-08 17:36:59 - src.validation.schema_validator - INFO - Validating extracted invoice data against schema
+2025-05-08 17:36:59 - src.validation.schema_validator - ERROR - Schema validation failed: vendor_tax_id - 'LU19647148' does not match '^[A-Z0-9]\\d{7}[A-Z0-9]$'
+2025-05-08 17:36:59 - Invoice_manager.src.main - INFO - Successfully processed invoice: invoices/invoice-5.pdf
+2025-05-08 18:55:47 - Invoice_manager.src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 18:55:47 - Invoice_manager.src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 18:55:47 - Invoice_manager.src.ocr.mistral_wrapper - ERROR - Error in Mistral OCR API call: 'Chat' object is not callable
+2025-05-08 18:55:47 - Invoice_manager.src.ocr.mistral_wrapper - INFO - Using Tesseract fallback for OCR processing of invoices/invoice-5.pdf
+2025-05-08 18:55:48 - Invoice_manager.src.ocr.mistral_wrapper - ERROR - Error running Tesseract fallback OCR: cannot identify image file 'invoices/invoice-5.pdf'
+2025-05-08 18:55:48 - Invoice_manager.src.ocr.mistral_wrapper - ERROR - Error running Mistral OCR: OCR processing failed: cannot identify image file 'invoices/invoice-5.pdf'
+2025-05-08 19:11:16 - Invoice_manager.src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 19:16:28 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 19:16:28 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 19:16:28 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 19:16:28 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 19:16:28 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 19:16:28 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 19:16:28 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 19:16:28 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 19:16:28 - src.main - INFO - Invoice Processor initialized
+2025-05-08 19:18:26 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 19:18:26 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 19:18:26 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 19:18:26 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 19:18:26 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 19:18:26 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 19:18:26 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 19:18:26 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 19:18:26 - src.main - INFO - Invoice Processor initialized
+2025-05-08 19:18:32 - src.ocr.mistral_wrapper - INFO - Mistral OCR processed 847 words across 2 pages with confidence: 0.95 in 5978.64ms
+2025-05-08 19:18:32 - src.ocr.mistral_wrapper - INFO - Using native OCR results for structured extraction
+2025-05-08 19:18:37 - src.ocr.mistral_wrapper - ERROR - Error extracting structured data: Expecting value: line 1 column 1 (char 0)
+2025-05-08 19:18:37 - src.validation.schema_validator - INFO - Validating extracted invoice data against schema
+2025-05-08 19:18:37 - src.validation.schema_validator - WARNING - Required field 'invoice_number' is missing
+2025-05-08 19:18:37 - src.validation.schema_validator - WARNING - Required field 'issue_date' is missing
+2025-05-08 19:18:37 - src.validation.schema_validator - WARNING - Required field 'vendor_name' is missing
+2025-05-08 19:18:37 - src.validation.schema_validator - WARNING - Required field 'vendor_tax_id' is missing
+2025-05-08 19:18:37 - src.validation.schema_validator - WARNING - Required field 'vendor_address' is missing
+2025-05-08 19:18:37 - src.validation.schema_validator - WARNING - Required field 'buyer_name' is missing
+2025-05-08 19:18:37 - src.validation.schema_validator - WARNING - Required field 'buyer_tax_id' is missing
+2025-05-08 19:18:37 - src.validation.schema_validator - WARNING - Required field 'taxable_base' is missing
+2025-05-08 19:18:37 - src.validation.schema_validator - WARNING - Required field 'vat_rate' is missing
+2025-05-08 19:18:37 - src.validation.schema_validator - WARNING - Required field 'vat_amount' is missing
+2025-05-08 19:18:37 - src.validation.schema_validator - WARNING - Required field 'total_amount' is missing
+2025-05-08 19:18:37 - src.validation.schema_validator - ERROR - Schema validation failed: vendor_tax_id - 'N/A' does not match '^[A-Z0-9]\\d{7}[A-Z0-9]$'
+2025-05-08 19:18:37 - src.export.writers - INFO - Exported invoice data to JSON: output/direct_pdf_result.json
+2025-05-08 19:19:46 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 19:19:46 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 19:19:46 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 19:19:46 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 19:19:46 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 19:19:46 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 19:19:46 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 19:19:46 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 19:19:46 - src.main - INFO - Invoice Processor initialized
+2025-05-08 19:19:48 - src.ocr.mistral_wrapper - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 2734.85ms
+2025-05-08 19:19:48 - src.ocr.mistral_wrapper - INFO - Using native OCR results for structured extraction
+2025-05-08 19:19:58 - src.ocr.mistral_wrapper - INFO - Extracted 16 fields using Mistral OCR + LLM structure extraction
+2025-05-08 19:19:58 - src.validation.schema_validator - INFO - Validating extracted invoice data against schema
+2025-05-08 19:19:58 - src.validation.schema_validator - ERROR - Schema validation failed: vendor_tax_id - 'Not provided' does not match '^[A-Z0-9]\\d{7}[A-Z0-9]$'
+2025-05-08 19:19:58 - src.export.writers - INFO - Exported invoice data to JSON: output/direct_pdf_result.json
+2025-05-08 19:20:25 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 19:20:25 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 19:20:25 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 19:20:25 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 19:20:25 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 19:20:25 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 19:20:25 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 19:20:25 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 19:20:25 - src.main - INFO - Invoice Processor initialized
+2025-05-08 19:20:25 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 19:20:25 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 19:20:25 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 19:20:25 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 19:20:25 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 19:20:25 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 19:20:25 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 19:20:25 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 19:20:25 - src.main - INFO - Invoice Processor initialized
+2025-05-08 19:20:27 - src.ocr.mistral_wrapper - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 2529.53ms
+2025-05-08 19:20:27 - src.ocr.mistral_wrapper - INFO - Using native OCR results for structured extraction
+2025-05-08 19:20:27 - src.ocr.mistral_wrapper - ERROR - Error extracting structured data: API error occurred: Status 429
+{"message":"Requests rate limit exceeded"}
+2025-05-08 19:20:27 - src.validation.schema_validator - INFO - Validating extracted invoice data against schema
+2025-05-08 19:20:27 - src.validation.schema_validator - WARNING - Required field 'invoice_number' is missing
+2025-05-08 19:20:27 - src.validation.schema_validator - WARNING - Required field 'issue_date' is missing
+2025-05-08 19:20:27 - src.validation.schema_validator - WARNING - Required field 'vendor_name' is missing
+2025-05-08 19:20:27 - src.validation.schema_validator - WARNING - Required field 'vendor_tax_id' is missing
+2025-05-08 19:20:27 - src.validation.schema_validator - WARNING - Required field 'vendor_address' is missing
+2025-05-08 19:20:27 - src.validation.schema_validator - WARNING - Required field 'buyer_name' is missing
+2025-05-08 19:20:27 - src.validation.schema_validator - WARNING - Required field 'buyer_tax_id' is missing
+2025-05-08 19:20:27 - src.validation.schema_validator - WARNING - Required field 'taxable_base' is missing
+2025-05-08 19:20:27 - src.validation.schema_validator - WARNING - Required field 'vat_rate' is missing
+2025-05-08 19:20:27 - src.validation.schema_validator - WARNING - Required field 'vat_amount' is missing
+2025-05-08 19:20:27 - src.validation.schema_validator - WARNING - Required field 'total_amount' is missing
+2025-05-08 19:20:27 - src.validation.schema_validator - ERROR - Schema validation failed: vendor_tax_id - 'N/A' does not match '^[A-Z0-9]\\d{7}[A-Z0-9]$'
+2025-05-08 19:20:27 - src.export.writers - INFO - Exported invoice data to JSON: output/invoice-5_result.json
+2025-05-08 19:24:19 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 19:24:19 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 19:24:19 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 19:24:19 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 19:24:19 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 19:24:19 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 19:24:19 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 19:24:19 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 19:24:19 - src.main - INFO - Invoice Processor initialized
+2025-05-08 19:24:19 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 19:24:19 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 19:24:19 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 19:24:19 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 19:24:19 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 19:24:19 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 19:24:19 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 19:24:19 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 19:24:19 - src.main - INFO - Invoice Processor initialized
+2025-05-08 19:24:21 - src.ocr.mistral_wrapper - INFO - Mistral OCR processed 847 words across 2 pages with confidence: 0.95 in 2752.24ms
+2025-05-08 19:24:21 - src.ocr.mistral_wrapper - INFO - Using native OCR results for structured extraction
+2025-05-08 19:24:27 - src.ocr.mistral_wrapper - INFO - Extracted 16 fields using Mistral OCR + LLM structure extraction
+2025-05-08 19:24:27 - src.validation.schema_validator - INFO - Validating extracted invoice data against schema
+2025-05-08 19:24:27 - src.validation.schema_validator - ERROR - Schema validation failed: vendor_tax_id - 'Not provided' does not match '^[A-Z0-9]\\d{7}[A-Z0-9]$'
+2025-05-08 19:24:27 - src.export.writers - INFO - Exported invoice data to JSON: output/invoice-5_result.json
+2025-05-08 20:02:46 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 20:02:46 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 20:02:47 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 20:02:47 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 20:02:47 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 20:02:47 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 20:02:47 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 20:02:47 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 20:02:47 - src.main - INFO - Invoice Processor initialized
+2025-05-08 20:02:49 - src.ocr.mistral_wrapper - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 2738.39ms
+2025-05-08 20:02:49 - src.ocr.mistral_wrapper - INFO - Using native OCR results for structured extraction
+2025-05-08 20:02:57 - src.ocr.mistral_wrapper - INFO - Extracted 16 fields using Mistral OCR + LLM structure extraction
+2025-05-08 20:02:57 - src.validation.schema_validator - INFO - Validating extracted invoice data against schema
+2025-05-08 20:02:57 - src.validation.schema_validator - ERROR - Schema validation failed: vendor_tax_id - 'Not provided' does not match '^[A-Z0-9]\\d{7}[A-Z0-9]$'
+2025-05-08 20:02:57 - src.export.writers - INFO - Exported invoice data to JSON: output/invoice-5_result.json
+2025-05-08 20:03:07 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 20:03:07 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 20:03:07 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 20:03:08 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 20:03:08 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 20:03:08 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 20:03:08 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 20:03:08 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 20:03:08 - src.main - INFO - Invoice Processor initialized
+2025-05-08 20:03:08 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 20:03:08 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 20:03:08 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 20:03:08 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 20:03:08 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 20:03:08 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 20:03:08 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 20:03:08 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 20:03:08 - src.main - INFO - Invoice Processor initialized
+2025-05-08 20:03:10 - src.ocr.mistral_wrapper - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 2578.39ms
+2025-05-08 20:03:10 - src.ocr.mistral_wrapper - INFO - Using native OCR results for structured extraction
+2025-05-08 20:03:17 - src.ocr.mistral_wrapper - INFO - Extracted 16 fields using Mistral OCR + LLM structure extraction
+2025-05-08 20:03:17 - src.validation.schema_validator - INFO - Validating extracted invoice data against schema
+2025-05-08 20:03:17 - src.validation.schema_validator - ERROR - Schema validation failed: vendor_tax_id - 'Not provided' does not match '^[A-Z0-9]\\d{7}[A-Z0-9]$'
+2025-05-08 20:03:17 - src.export.writers - INFO - Exported invoice data to JSON: output/invoice-5_result.json
+2025-05-08 21:14:01 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-08 21:14:01 - src.preprocessing.image_processor - INFO - Initialized image processor with target DPI: 300
+2025-05-08 21:14:01 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-08 21:14:01 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-08 21:14:01 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-08 21:14:01 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-08 21:14:01 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-08 21:14:01 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-08 21:14:01 - src.main - INFO - Invoice Processor initialized
+2025-05-08 21:14:04 - src.ocr.mistral_wrapper - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 2856.56ms
+2025-05-08 21:14:04 - src.ocr.mistral_wrapper - INFO - Using native OCR results for structured extraction
+2025-05-08 21:14:09 - src.ocr.mistral_wrapper - INFO - Extracted 16 fields using Mistral OCR + LLM structure extraction
+2025-05-08 21:14:09 - src.validation.schema_validator - INFO - Validating extracted invoice data against schema
+2025-05-08 21:14:09 - src.validation.schema_validator - ERROR - Schema validation failed: vendor_tax_id - 'Not provided' does not match '^[A-Z0-9]\\d{7}[A-Z0-9]$'
+2025-05-08 21:14:09 - src.export.writers - INFO - Exported invoice data to JSON: output/test_utf8.json

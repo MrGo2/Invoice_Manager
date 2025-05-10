@@ -1,0 +1,206 @@
+[
+  {
+    "ocr_text": "EMPRESA EJEMPLO S.L.\nC/ Ejemplo, 123\n28001 Madrid, España\nCIF: B12345678\n\nFACTURA\nNúmero: F2023-1234\nFecha: 15/06/2023\n\nCLIENTE:\nCliente Ejemplo S.A.\nC/ Cliente, 456\n08001 Barcelona, España\nCIF: A87654321\n\nDESCRIPCIÓN          CANTIDAD    PRECIO     TOTAL\nServicio de consultoría      10     100,00 €   1000,00 €\nMateriales de oficina         5      25,50 €    127,50 €\nSoporte técnico              8      75,00 €    600,00 €\n\nBase imponible:                             1727,50 €\nIVA (21%):                                   362,78 €\nTOTAL FACTURA:                              2090,28 €\n\nForma de pago: Transferencia bancaria\nVencimiento: 15/07/2023\n\nCuenta bancaria: ES12 3456 7890 1234 5678 9012",
+    "extraction": {
+      "invoice_number": "F2023-1234",
+      "issue_date": "2023-06-15",
+      "currency": "EUR",
+      "vendor": {
+        "name": "EMPRESA EJEMPLO S.L.",
+        "tax_id": "B12345678",
+        "address": {
+          "street_type": "C/",
+          "street_name": "Ejemplo",
+          "street_number": "123",
+          "postal_code": "28001",
+          "city": "Madrid",
+          "country": "ES"
+        }
+      },
+      "buyer": {
+        "name": "Cliente Ejemplo S.A.",
+        "tax_id": "A87654321",
+        "address": {
+          "street_type": "C/",
+          "street_name": "Cliente",
+          "street_number": "456",
+          "postal_code": "08001",
+          "city": "Barcelona",
+          "country": "ES"
+        }
+      },
+      "taxable_base": 1727.50,
+      "vat_rate": "21%",
+      "vat_amount": 362.78,
+      "total_amount": 2090.28,
+      "payment_terms": {
+        "method": "transferencia",
+        "due_date": "2023-07-15"
+      },
+      "bank_account": {
+        "iban": "ES12 3456 7890 1234 5678 9012"
+      },
+      "line_items": [
+        {
+          "description": "Servicio de consultoría",
+          "item_type": "service",
+          "qty": 10,
+          "unit_price": 100.00,
+          "line_total": 1000.00,
+          "currency": "EUR"
+        },
+        {
+          "description": "Materiales de oficina",
+          "item_type": "product",
+          "qty": 5,
+          "unit_price": 25.50,
+          "line_total": 127.50,
+          "currency": "EUR"
+        },
+        {
+          "description": "Soporte técnico",
+          "item_type": "service",
+          "qty": 8,
+          "unit_price": 75.00,
+          "line_total": 600.00,
+          "currency": "EUR"
+        }
+      ]
+    }
+  },
+  {
+    "ocr_text": "TECNOLOGÍA AVANZADA, S.A.\nAvda. Innovación, 42\n41092 Sevilla\nNIF: A11223344\n\nFactura Nº: TEC/2023/0089\nFecha de emisión: 22-03-2023\n\nEMITIDO A:\nInversiones Futuras, S.L.\nC/ Inversión, 78\n28046 Madrid\nNIF: B99887766\n\nConcepto                      Unidades    P. unitario    Importe\n---------------------------------------------------------------\nOrdenador portátil HP Elite      2         899,00 €     1.798,00 €\nMonitor 27\" Dell UltraSharp     4         329,50 €     1.318,00 €\nServicio de instalación          1         250,00 €       250,00 €\n\nBase imponible                                         3.366,00 €\nIVA (21%)                                                706,86 €\nTOTAL                                                  4.072,86 €\n\nCondiciones de pago: 30 días mediante transferencia bancaria\nCuenta: ES98 7654 3210 9876 5432 1098",
+    "extraction": {
+      "invoice_number": "TEC/2023/0089",
+      "issue_date": "2023-03-22",
+      "currency": "EUR",
+      "vendor": {
+        "name": "TECNOLOGÍA AVANZADA, S.A.",
+        "tax_id": "A11223344",
+        "address": {
+          "street_type": "Avda.",
+          "street_name": "Innovación",
+          "street_number": "42",
+          "postal_code": "41092",
+          "city": "Sevilla",
+          "country": "ES"
+        }
+      },
+      "buyer": {
+        "name": "Inversiones Futuras, S.L.",
+        "tax_id": "B99887766",
+        "address": {
+          "street_type": "C/",
+          "street_name": "Inversión",
+          "street_number": "78",
+          "postal_code": "28046",
+          "city": "Madrid",
+          "country": "ES"
+        }
+      },
+      "taxable_base": 3366.00,
+      "vat_rate": "21%",
+      "vat_amount": 706.86,
+      "total_amount": 4072.86,
+      "payment_terms": {
+        "method": "transferencia",
+        "days": 30
+      },
+      "bank_account": {
+        "iban": "ES98 7654 3210 9876 5432 1098"
+      },
+      "line_items": [
+        {
+          "description": "Ordenador portátil HP Elite",
+          "item_type": "product",
+          "qty": 2,
+          "unit_price": 899.00,
+          "line_total": 1798.00,
+          "currency": "EUR"
+        },
+        {
+          "description": "Monitor 27\" Dell UltraSharp",
+          "item_type": "product",
+          "qty": 4,
+          "unit_price": 329.50,
+          "line_total": 1318.00,
+          "currency": "EUR"
+        },
+        {
+          "description": "Servicio de instalación",
+          "item_type": "service",
+          "qty": 1,
+          "unit_price": 250.00,
+          "line_total": 250.00,
+          "currency": "EUR"
+        }
+      ]
+    }
+  },
+  {
+    "ocr_text": "DISTRIBUCIONES MEDITERRÁNEAS, SL\nPolígono Industrial Sur, Nave 15\n46980 Valencia\nCIF: B55667788\n\nCliente:\nHostelería Costa, SL\nAvda. Playa, 123\n03001 Alicante\nCIF: B11335577\n\nFACTURA Nº: DM-2023-0456\nFecha: 07/05/2023\n\nProducto              Cant.   Precio/u    Total\n-----------------------------------------\nAceite de oliva 5L      20     22,50      450,00\nVino tinto (caja 6)     15     32,00      480,00\nPatatas (saco 25kg)     10     18,75      187,50\n\nSubtotal:                             1.117,50\nIVA 10%:                                111,75\nTOTAL EUROS:                          1.229,25\n\nForma de pago: Recibo domiciliado\nVencimiento: 22/05/2023",
+    "extraction": {
+      "invoice_number": "DM-2023-0456",
+      "issue_date": "2023-05-07",
+      "currency": "EUR",
+      "vendor": {
+        "name": "DISTRIBUCIONES MEDITERRÁNEAS, SL",
+        "tax_id": "B55667788",
+        "address": {
+          "street_type": "",
+          "street_name": "Polígono Industrial Sur",
+          "street_number": "Nave 15",
+          "postal_code": "46980",
+          "city": "Valencia",
+          "country": "ES"
+        }
+      },
+      "buyer": {
+        "name": "Hostelería Costa, SL",
+        "tax_id": "B11335577",
+        "address": {
+          "street_type": "Avda.",
+          "street_name": "Playa",
+          "street_number": "123",
+          "postal_code": "03001",
+          "city": "Alicante",
+          "country": "ES"
+        }
+      },
+      "taxable_base": 1117.50,
+      "vat_rate": "10%",
+      "vat_amount": 111.75,
+      "total_amount": 1229.25,
+      "payment_terms": {
+        "method": "recibo_domiciliado",
+        "due_date": "2023-05-22"
+      },
+      "line_items": [
+        {
+          "description": "Aceite de oliva 5L",
+          "item_type": "product",
+          "qty": 20,
+          "unit_price": 22.50,
+          "line_total": 450.00,
+          "currency": "EUR"
+        },
+        {
+          "description": "Vino tinto (caja 6)",
+          "item_type": "product",
+          "qty": 15,
+          "unit_price": 32.00,
+          "line_total": 480.00,
+          "currency": "EUR"
+        },
+        {
+          "description": "Patatas (saco 25kg)",
+          "item_type": "product",
+          "qty": 10,
+          "unit_price": 18.75,
+          "line_total": 187.50,
+          "currency": "EUR"
+        }
+      ]
+    }
+  }
+] 

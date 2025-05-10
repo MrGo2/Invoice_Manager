@@ -1,0 +1,513 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Improved Spanish Invoice Schema",
+  "description": "Enhanced schema for validating structured Spanish invoice data",
+  "type": "object",
+  "required": [
+    "invoice_number",
+    "issue_date",
+    "currency",
+    "vendor",
+    "buyer",
+    "taxable_base",
+    "vat_rate",
+    "vat_amount",
+    "total_amount"
+  ],
+  "properties": {
+    "// 1. Header / Parties": {
+      "type": "null",
+      "description": "Document header and party information"
+    },
+    "invoice_series": {
+      "type": "string",
+      "description": "Invoice series identifier"
+    },
+    "invoice_number": {
+      "type": "string",
+      "description": "Invoice identification number (unique)"
+    },
+    "issue_date": {
+      "type": "string",
+      "description": "Date when the invoice was issued in ISO 8601 format (YYYY-MM-DD)",
+      "pattern": "^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency code used in the invoice",
+      "default": "EUR",
+      "enum": ["EUR", "USD", "GBP"]
+    },
+    "vendor": {
+      "type": "object",
+      "description": "Information about the company or person issuing the invoice",
+      "required": ["name", "tax_id"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Legal name of the vendor"
+        },
+        "tax_id": {
+          "type": "string",
+          "description": "Tax identification number (NIF/CIF) of the vendor",
+          "pattern": "^[A-Z0-9]\\d{7}[A-Z0-9]$"
+        },
+        "address": {
+          "type": "object",
+          "description": "Address of the vendor",
+          "properties": {
+            "street_type": {
+              "type": "string",
+              "description": "Type of street (Calle, Avenida, etc.)"
+            },
+            "street_name": {
+              "type": "string",
+              "description": "Name of the street"
+            },
+            "street_number": {
+              "type": "string",
+              "description": "Street number"
+            },
+            "street": {
+              "type": "string",
+              "description": "Full street address (if components not available)"
+            },
+            "floor": {
+              "type": "string",
+              "description": "Floor number"
+            },
+            "door": {
+              "type": "string",
+              "description": "Door identifier"
+            },
+            "postal_code": {
+              "type": "string",
+              "description": "Postal code"
+            },
+            "city": {
+              "type": "string",
+              "description": "City name"
+            },
+            "province": {
+              "type": "string",
+              "description": "Province or state"
+            },
+            "country": {
+              "type": "string",
+              "description": "Country code (ISO 3166-1 alpha-2)"
+            },
+            "location": {
+              "type": "string",
+              "description": "Additional location information (industrial park, building name, etc.)"
+            }
+          }
+        }
+      }
+    },
+    "buyer": {
+      "type": "object",
+      "description": "Information about the company or person receiving the invoice",
+      "required": ["name", "tax_id"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the buyer"
+        },
+        "tax_id": {
+          "type": "string",
+          "description": "Tax identification number (NIF/VAT) of the buyer",
+          "pattern": "^[A-Z0-9]\\d{7}[A-Z0-9]$"
+        },
+        "address": {
+          "type": "object",
+          "description": "Address of the buyer",
+          "properties": {
+            "street_type": {
+              "type": "string",
+              "description": "Type of street (Calle, Avenida, etc.)"
+            },
+            "street_name": {
+              "type": "string",
+              "description": "Name of the street"
+            },
+            "street_number": {
+              "type": "string",
+              "description": "Street number"
+            },
+            "street": {
+              "type": "string",
+              "description": "Full street address (if components not available)"
+            },
+            "floor": {
+              "type": "string",
+              "description": "Floor number"
+            },
+            "door": {
+              "type": "string",
+              "description": "Door identifier"
+            },
+            "postal_code": {
+              "type": "string",
+              "description": "Postal code"
+            },
+            "city": {
+              "type": "string",
+              "description": "City name"
+            },
+            "province": {
+              "type": "string",
+              "description": "Province or state"
+            },
+            "country": {
+              "type": "string",
+              "description": "Country code (ISO 3166-1 alpha-2)"
+            },
+            "location": {
+              "type": "string",
+              "description": "Additional location information (industrial park, building name, etc.)"
+            }
+          }
+        }
+      }
+    },
+
+    "// 2. Totals & Taxes": {
+      "type": "null",
+      "description": "Financial totals and tax information"
+    },
+    "taxable_base": {
+      "type": "number",
+      "description": "Taxable base subtotal amount before taxes",
+      "minimum": 0
+    },
+    "discount_rate": {
+      "type": "number",
+      "description": "Discount percentage rate applied",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "discount_amount": {
+      "type": "number",
+      "description": "Discount amount in currency",
+      "minimum": 0
+    },
+    "vat_rate": {
+      "type": "string",
+      "description": "VAT percentage rate applied including % symbol",
+      "pattern": "^[0-9]{1,2}(,[0-9]{1,2})?%$"
+    },
+    "vat_amount": {
+      "type": "number",
+      "description": "VAT amount in currency",
+      "minimum": 0
+    },
+    "vat_breakdown": {
+      "type": "array",
+      "description": "Breakdown of multiple VAT rates and amounts if applicable",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rate": {
+            "type": "string",
+            "description": "VAT rate percentage including % symbol",
+            "pattern": "^[0-9]{1,2}(,[0-9]{1,2})?%$"
+          },
+          "base": {
+            "type": "number",
+            "description": "Base amount this VAT rate applies to",
+            "minimum": 0
+          },
+          "amount": {
+            "type": "number",
+            "description": "VAT amount for this rate",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "igic_rate": {
+      "type": "string",
+      "description": "IGIC (Canary Islands General Indirect Tax) rate including % symbol",
+      "pattern": "^[0-9]{1,2}(,[0-9]{1,2})?%$"
+    },
+    "igic_amount": {
+      "type": "number",
+      "description": "IGIC amount in currency",
+      "minimum": 0
+    },
+    "irpf_rate": {
+      "type": "string",
+      "description": "IRPF (Personal Income Tax withholding) rate including % symbol",
+      "pattern": "^[0-9]{1,2}(,[0-9]{1,2})?%$"
+    },
+    "irpf_amount": {
+      "type": "number",
+      "description": "IRPF amount in currency",
+      "minimum": 0
+    },
+    "surcharge_rate": {
+      "type": "string",
+      "description": "Surcharge of equivalence rate including % symbol",
+      "pattern": "^[0-9]{1,2}(,[0-9]{1,2})?%$"
+    },
+    "surcharge_amount": {
+      "type": "number",
+      "description": "Surcharge amount in currency",
+      "minimum": 0
+    },
+    "total_gross": {
+      "type": "number",
+      "description": "Total gross amount (before taxes)",
+      "minimum": 0
+    },
+    "total_amount": {
+      "type": "number",
+      "description": "Total amount payable (including all taxes)",
+      "minimum": 0
+    },
+
+    "// 3. Line Items": {
+      "type": "null",
+      "description": "Individual line items on the invoice"
+    },
+    "line_items": {
+      "type": "array",
+      "description": "Individual line items on the invoice",
+      "items": {
+        "type": "object",
+        "required": ["description", "qty", "unit_price", "line_total"],
+        "properties": {
+          "line_number": {
+            "type": "string",
+            "description": "Line item number or identifier"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the product or service"
+          },
+          "item_type": {
+            "type": "string",
+            "description": "Type of item (product or service)",
+            "enum": ["product", "service"]
+          },
+          "qty": {
+            "type": "number",
+            "description": "Quantity of items",
+            "minimum": 0
+          },
+          "unit_of_measure": {
+            "type": "string",
+            "description": "Unit of measure (e.g., units, kg, hours)"
+          },
+          "unit_price": {
+            "type": "number",
+            "description": "Price per unit (without currency symbol)",
+            "minimum": 0
+          },
+          "currency": {
+            "type": "string",
+            "description": "Currency code for this line item",
+            "default": "EUR",
+            "enum": ["EUR", "USD", "GBP"]
+          },
+          "line_discount_rate": {
+            "type": "string",
+            "description": "Discount percentage for this line including % symbol",
+            "pattern": "^[0-9]{1,2}(,[0-9]{1,2})?%$"
+          },
+          "line_tax_rate": {
+            "type": "string",
+            "description": "Tax rate applied to this line including % symbol",
+            "pattern": "^[0-9]{1,2}(,[0-9]{1,2})?%$"
+          },
+          "line_tax_amount": {
+            "type": "number",
+            "description": "Tax amount for this line",
+            "minimum": 0
+          },
+          "line_total": {
+            "type": "number",
+            "description": "Total price for this line item (without currency symbol)",
+            "minimum": 0
+          }
+        }
+      }
+    },
+
+    "// 4. Payment Info": {
+      "type": "null",
+      "description": "Payment terms and banking information"
+    },
+    "payment_terms": {
+      "type": "object",
+      "description": "Terms of payment",
+      "properties": {
+        "method": {
+          "type": "string",
+          "description": "Method of payment",
+          "enum": ["transferencia", "recibo_domiciliado", "tarjeta", "efectivo", "cheque", "otro"]
+        },
+        "days": {
+          "type": "number",
+          "description": "Payment term in days",
+          "minimum": 0
+        },
+        "due_date": {
+          "type": "string",
+          "description": "Payment due date in ISO 8601 format (YYYY-MM-DD)",
+          "pattern": "^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$"
+        }
+      }
+    },
+    "bank_account": {
+      "type": "object",
+      "description": "Bank account information",
+      "properties": {
+        "iban": {
+          "type": "string",
+          "description": "International Bank Account Number",
+          "pattern": "^[A-Z]{2}[0-9]{2}[A-Z0-9]{4}[0-9]{7}([A-Z0-9]?){0,16}$"
+        },
+        "swift": {
+          "type": "string",
+          "description": "SWIFT/BIC code of the bank",
+          "pattern": "^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$"
+        }
+      }
+    },
+
+    "// 5. Regulatory & Metadata": {
+      "type": "null",
+      "description": "Regulatory information and document metadata"
+    },
+    "invoice_type": {
+      "type": "string",
+      "description": "Type of invoice document",
+      "enum": ["invoice", "simplified", "rectification", "credit_note", "debit_note"]
+    },
+    "original_invoice_ref": {
+      "type": "string",
+      "description": "Reference to original invoice (if credit/debit note)"
+    },
+    "electronic_signature": {
+      "type": "string",
+      "description": "Electronic signature validity information"
+    },
+    "qr_code_hash": {
+      "type": "string",
+      "description": "QR code or CSV hash (Facturae)"
+    },
+    "sii_submission_id": {
+      "type": "string",
+      "description": "SII (Immediate Information Supply) submission ID"
+    },
+    "sii_status": {
+      "type": "string",
+      "description": "SII submission status",
+      "enum": ["pending", "submitted", "accepted", "rejected", "unknown"]
+    },
+    "aeat_event_codes": {
+      "type": "array",
+      "description": "AEAT (Spanish Tax Agency) event codes",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes or comments on the invoice"
+    },
+
+    "// 6. System Metadata": {
+      "type": "null",
+      "description": "System processing metadata"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata about the extraction process",
+      "properties": {
+        "confidence_score": {
+          "type": "number",
+          "description": "Overall confidence score of the extraction",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "extraction_timestamp": {
+          "type": "string",
+          "description": "ISO timestamp of when the extraction was performed",
+          "format": "date-time"
+        },
+        "ocr_engine": {
+          "type": "string",
+          "description": "OCR engine used for extraction",
+          "enum": ["mistral", "tesseract", "hybrid"]
+        },
+        "ocr_engine_version": {
+          "type": "string",
+          "description": "Version of the OCR engine used"
+        },
+        "source_file": {
+          "type": "string",
+          "description": "Original filename of the processed invoice"
+        },
+        "source_file_checksum": {
+          "type": "string",
+          "description": "Checksum/hash of the original file"
+        },
+        "page_count": {
+          "type": "integer",
+          "description": "Number of pages in the invoice document",
+          "minimum": 1
+        },
+        "image_resolution": {
+          "type": "integer",
+          "description": "Image resolution in DPI",
+          "minimum": 72
+        },
+        "processing_duration_ms": {
+          "type": "integer",
+          "description": "Processing duration in milliseconds",
+          "minimum": 0
+        },
+        "validation_errors": {
+          "type": "array",
+          "description": "Validation errors if any",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "description": "Path to the field with error"
+              },
+              "message": {
+                "type": "string",
+                "description": "Error message"
+              }
+            }
+          }
+        },
+        "validation_warnings": {
+          "type": "array",
+          "description": "Validation warnings if any",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "description": "Path to the field with warning"
+              },
+              "message": {
+                "type": "string",
+                "description": "Warning message"
+              }
+            }
+          }
+        },
+        "validation_passed": {
+          "type": "boolean",
+          "description": "Whether validation passed or not"
+        }
+      }
+    }
+  }
+} 

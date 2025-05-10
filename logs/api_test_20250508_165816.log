@@ -1,0 +1,11 @@
+2025-05-08 16:58:16,618 - api_test - INFO - Using first found image: invoices/invoice-5.pdf
+2025-05-08 16:58:16,618 - api_test - INFO - MISTRAL_API_KEY found: 8JTRV**********
+2025-05-08 16:58:16,618 - api_test - INFO - OPENAI_API_KEY found: sk-pr**********
+2025-05-08 16:58:16,618 - api_test - INFO - Added /Users/carlos/Projects/Invoice_manager/Invoice_manager to Python path
+2025-05-08 16:58:16,618 - api_test - INFO - Testing OpenAI API connection...
+2025-05-08 16:58:18,044 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-08 16:58:18,048 - api_test - INFO - OpenAI API response: Hello! I am always here to help you.
+2025-05-08 16:58:18,049 - api_test - INFO - Test results saved to output/api_test_results_20250508_165816.json
+2025-05-08 16:58:18,049 - api_test - INFO - Test Summary: 1/1 tests passed
+2025-05-08 16:58:18,049 - api_test - INFO - Log file: logs/api_test_20250508_165816.log
+2025-05-08 16:58:18,049 - api_test - INFO - Results file: output/api_test_results_20250508_165816.json

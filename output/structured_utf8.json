@@ -1,0 +1,17 @@
+{
+  "document_type": "invoice",
+  "date": "28.04.2024",
+  "total_amount": "69,99 €",
+  "vendor": "HONG KONG UGREEN LIMITED",
+  "line_items": [
+    {
+      "description": "UGREEN Revolok Pro 210 Docking Station USB C 10 En 1 Doble HDMI 8K30Hz 4K60Hz Hub Adaptador USB C a 2 HDMI Ethernet Gigabit USB 3.0 PD 100W Lector Tarjeta SD TF Compatible con MacBook Pro Air M2 M1 80BXDQS4BD",
+      "quantity": 1,
+      "unit_price_excl_tax": "57,84 €",
+      "tax_percentage": "21 %",
+      "unit_price_incl_tax": "69,99 €",
+      "total_price_incl_tax": "69,99 €"
+    }
+  ],
+  "payment_method": "Not specified"
+}

@@ -1,0 +1,26 @@
+{
+  "timestamp": "2025-05-08T16:56:17.614938",
+  "mistral_connection": false,
+  "openai_connection": true,
+  "mistral_ocr_test": false,
+  "mistral_structured_extraction": false,
+  "openai_extraction": false,
+  "tests": [
+    {
+      "name": "Mistral API Connection",
+      "success": false,
+      "timestamp": "2025-05-08T16:56:18.038970",
+      "details": {
+        "error": "No module named 'mistralai.models.chat_completion'"
+      }
+    },
+    {
+      "name": "OpenAI API Connection",
+      "success": true,
+      "timestamp": "2025-05-08T16:56:19.180140",
+      "details": {
+        "response": "Hello! I am always here to help you."
+      }
+    }
+  ]
+}

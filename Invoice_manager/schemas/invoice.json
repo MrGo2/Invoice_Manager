@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Spanish Invoice Schema",
+  "description": "Schema for validating extracted Spanish invoice data",
+  "type": "object",
+  "required": [
+    "invoice_number",
+    "issue_date",
+    "total_eur",
+    "vat_rate",
+    "vat_amount",
+    "vendor_name",
+    "vendor_tax_id",
+    "buyer_name"
+  ],
+  "properties": {
+    "invoice_number": {
+      "type": "string",
+      "description": "Invoice identification number"
+    },
+    "issue_date": {
+      "type": "string",
+      "description": "Date when the invoice was issued in DD/MM/YYYY format",
+      "pattern": "^[0-3][0-9]/[0-1][0-9]/[0-9]{4}$"
+    },
+    "total_eur": {
+      "type": "string",
+      "description": "Total invoice amount in EUR currency",
+      "pattern": "^[0-9]{1,3}(\\s?[0-9]{3})*(,[0-9]{2})?(\\s?€)?$"
+    },
+    "vat_rate": {
+      "type": "string",
+      "description": "VAT percentage rate applied",
+      "pattern": "^[0-9]{1,2}(,[0-9]{1,2})?%$"
+    },
+    "vat_amount": {
+      "type": "string",
+      "description": "VAT amount in EUR",
+      "pattern": "^[0-9]{1,3}(\\s?[0-9]{3})*(,[0-9]{2})?(\\s?€)?$"
+    },
+    "vendor_name": {
+      "type": "string",
+      "description": "Name of the company or person issuing the invoice"
+    },
+    "vendor_tax_id": {
+      "type": "string",
+      "description": "Tax identification number (NIF/CIF) of the vendor",
+      "pattern": "^[A-Z0-9]\\d{7}[A-Z0-9]$"
+    },
+    "buyer_name": {
+      "type": "string",
+      "description": "Name of the company or person receiving the invoice"
+    },
+    "buyer_tax_id": {
+      "type": "string",
+      "description": "Tax identification number (NIF/CIF) of the buyer",
+      "pattern": "^[A-Z0-9]\\d{7}[A-Z0-9]$"
+    },
+    "payment_terms": {
+      "type": "string",
+      "description": "Terms of payment (optional)"
+    },
+    "invoice_type": {
+      "type": "string",
+      "description": "Type of invoice (standard, simplified, rectification, etc.)",
+      "enum": ["standard", "simplified", "rectification", "credit_note"]
+    },
+    "line_items": {
+      "type": "array",
+      "description": "Individual line items on the invoice",
+      "items": {
+        "type": "object",
+        "required": ["description", "qty", "unit_price", "line_total"],
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Description of the product or service"
+          },
+          "qty": {
+            "type": "string",
+            "description": "Quantity of items"
+          },
+          "unit_price": {
+            "type": "string",
+            "description": "Price per unit in EUR",
+            "pattern": "^[0-9]{1,3}(\\s?[0-9]{3})*(,[0-9]{2})?(\\s?€)?$"
+          },
+          "line_total": {
+            "type": "string",
+            "description": "Total price for this line item in EUR",
+            "pattern": "^[0-9]{1,3}(\\s?[0-9]{3})*(,[0-9]{2})?(\\s?€)?$"
+          }
+        }
+      }
+    },
+    "subtotal": {
+      "type": "string",
+      "description": "Subtotal amount before taxes",
+      "pattern": "^[0-9]{1,3}(\\s?[0-9]{3})*(,[0-9]{2})?(\\s?€)?$"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency used in the invoice",
+      "default": "EUR",
+      "enum": ["EUR"]
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes or comments on the invoice"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata about the extraction process",
+      "properties": {
+        "confidence_score": {
+          "type": "number",
+          "description": "Overall confidence score of the extraction",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "extraction_timestamp": {
+          "type": "string",
+          "description": "ISO timestamp of when the extraction was performed",
+          "format": "date-time"
+        },
+        "ocr_engine": {
+          "type": "string",
+          "description": "OCR engine used for extraction",
+          "enum": ["mistral", "tesseract", "hybrid"]
+        },
+        "source_file": {
+          "type": "string",
+          "description": "Original filename of the processed invoice"
+        }
+      }
+    }
+  }
+} 

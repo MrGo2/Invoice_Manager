@@ -1,0 +1,65 @@
+# Invoice Processor Configuration
+
+# Main settings
+language: spa
+ocr_engine: mistral
+tesseract_fallback: true
+
+# File handling
+input:
+  allowed_formats: ["pdf", "jpg", "jpeg", "png", "tiff"]
+  max_file_size_mb: 10
+
+# OCR settings
+ocr:
+  preprocessing:
+    dpi: 300
+    deskew: true
+    denoise: true
+    contrast_enhancement: true
+  mistral:
+    model: mistral-large-vision-latest
+    timeout: 60
+  tesseract:
+    options: "--oem 1 --psm 6"
+    lang: spa
+  confidence:
+    threshold: 0.85
+    merge_strategy: "highest_confidence"
+
+# LLM extraction
+openai:
+  model: gpt-4o
+  temperature: 0
+  max_tokens: 2000
+  few_shot_examples: 3
+  log_prompts: true
+
+# Validation
+validation:
+  schema: "schemas/invoice.json"
+  strict_mode: true
+
+# Output
+export:
+  default_format: "json"
+  available_formats: ["json", "csv"]
+  webhook:
+    enabled: false
+    url: ""
+    headers: {}
+
+# Logging
+logging:
+  level: INFO
+  file: "logs/invoice_processor.log"
+  max_size_mb: 10
+  backup_count: 5
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  date_format: "%Y-%m-%d %H:%M:%S"
+
+# Monitoring (optional)
+monitoring:
+  prometheus:
+    enabled: false
+    port: 9090 

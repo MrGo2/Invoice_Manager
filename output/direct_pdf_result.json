@@ -1,0 +1,45 @@
+{
+  "invoice_number": "DS-ASE-INV-ES-2024-33264305",
+  "issue_date": "28/04/2024",
+  "vendor_name": "HONG KONG UGREEN LIMITED",
+  "vendor_tax_id": "Not provided",
+  "vendor_address": "19H WAN DI PLAZA, 3 TAI YU STREET, SAN PO KONG, KL, HONG KONG, HONG KONG, 999077, HK",
+  "buyer_name": "Carlos Lorenzo",
+  "buyer_tax_id": "Not provided",
+  "buyer_address": "Avenida Isabel de Valois 90, Bajo A, Madrid, Madrid, 28050, ES",
+  "taxable_base": "57,84 €",
+  "vat_rate": "21%",
+  "vat_amount": "12,15 €",
+  "total_amount": "69,99 €",
+  "payment_terms": "Not specified",
+  "currency": "EUR",
+  "line_items": [
+    {
+      "description": "UGREEN Revolok Pro 210 Docking Station USB C 10 En 1 Doble HDMI 8K30Hz 4K60Hz Hub Adaptador USB C a 2 HDMI Ethernet Gigabit USB 3.0 PD 100W Lector Tarjeta SD TF Compatible con MacBook Pro Air M2 M1 80BXDQS4BD ASIN: 80BXDQS4BD",
+      "qty": 1,
+      "unit_price": "57,84 €",
+      "line_total": "69,99 €"
+    },
+    {
+      "description": "Envío",
+      "qty": 1,
+      "unit_price": "0,00 €",
+      "line_total": "0,00 €"
+    }
+  ],
+  "metadata": {
+    "source_file": "invoice-5.pdf",
+    "processing_duration_ms": 12431,
+    "extraction_method": "mistral_direct_pdf",
+    "ocr_engine": "mistral_ocr_native",
+    "confidence_score": 0.95,
+    "validation_errors": [
+      {
+        "path": "vendor_tax_id",
+        "message": "'Not provided' does not match '^[A-Z0-9]\\\\d{7}[A-Z0-9]$'"
+      }
+    ],
+    "validation_warnings": [],
+    "validation_passed": false
+  }
+}

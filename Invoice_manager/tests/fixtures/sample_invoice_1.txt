@@ -1,0 +1,26 @@
+EMPRESA EJEMPLO S.L.
+C/ Ejemplo, 123
+28001 Madrid, España
+CIF: B12345678
+
+FACTURA
+Número: F2023-1234
+Fecha: 15/06/2023
+
+CLIENTE:
+Cliente Ejemplo S.A.
+C/ Cliente, 456
+08001 Barcelona, España
+CIF: A87654321
+
+DESCRIPCIÓN                CANTIDAD    PRECIO     TOTAL
+Servicio de consultoría      10       100,00 €   1000,00 €
+Materiales de oficina         5        25,50 €    127,50 €
+Soporte técnico               8        75,00 €    600,00 €
+
+Base imponible:                               1727,50 €
+IVA (21%):                                     362,78 €
+TOTAL FACTURA:                                2090,28 €
+
+Forma de pago: Transferencia bancaria
+Vencimiento: 15/07/2023 

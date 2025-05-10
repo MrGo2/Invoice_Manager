@@ -1,0 +1,26 @@
+{
+  "timestamp": "2025-05-08T16:54:08.619478",
+  "mistral_connection": false,
+  "openai_connection": true,
+  "mistral_ocr_test": false,
+  "mistral_structured_extraction": false,
+  "openai_extraction": false,
+  "tests": [
+    {
+      "name": "Mistral API Connection",
+      "success": false,
+      "timestamp": "2025-05-08T16:54:09.162295",
+      "details": {
+        "error": "'Chat' object is not callable"
+      }
+    },
+    {
+      "name": "OpenAI API Connection",
+      "success": true,
+      "timestamp": "2025-05-08T16:54:10.711010",
+      "details": {
+        "response": "Hello! I am an AI assistant here to help"
+      }
+    }
+  ]
+}

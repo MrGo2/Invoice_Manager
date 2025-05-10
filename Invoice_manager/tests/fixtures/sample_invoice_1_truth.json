@@ -1,0 +1,33 @@
+{
+  "invoice_number": "F2023-1234",
+  "issue_date": "15/06/2023",
+  "total_eur": "2090,28 €",
+  "vat_rate": "21%",
+  "vat_amount": "362,78 €",
+  "vendor_name": "EMPRESA EJEMPLO S.L.",
+  "vendor_tax_id": "B12345678",
+  "buyer_name": "Cliente Ejemplo S.A.",
+  "buyer_tax_id": "A87654321",
+  "payment_terms": "Transferencia bancaria",
+  "subtotal": "1727,50 €",
+  "line_items": [
+    {
+      "description": "Servicio de consultoría",
+      "qty": "10",
+      "unit_price": "100,00 €",
+      "line_total": "1000,00 €"
+    },
+    {
+      "description": "Materiales de oficina",
+      "qty": "5",
+      "unit_price": "25,50 €",
+      "line_total": "127,50 €"
+    },
+    {
+      "description": "Soporte técnico",
+      "qty": "8",
+      "unit_price": "75,00 €",
+      "line_total": "600,00 €"
+    }
+  ]
+} 
