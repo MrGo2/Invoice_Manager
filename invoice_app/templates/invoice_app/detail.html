@@ -1,0 +1,48 @@
+{% extends 'invoice_app/base.html' %}
+
+{% block content %}
+<h2>Invoice Details</h2>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Invoice Information</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Status:</strong> 
+                    {% if invoice.status == 'pending' %}
+                        <span class="badge bg-warning">Pending</span>
+                    {% elif invoice.status == 'processing' %}
+                        <span class="badge bg-info">Processing</span>
+                    {% elif invoice.status == 'completed' %}
+                        <span class="badge bg-success">Completed</span>
+                    {% else %}
+                        <span class="badge bg-danger">Failed</span>
+                    {% endif %}
+                </p>
+                <p><strong>Uploaded:</strong> {{ invoice.uploaded_at }}</p>
+                <p><strong>File:</strong> <a href="{{ invoice.file.url }}">Download Original File</a></p>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Invoice Number:</strong> {{ invoice.invoice_number|default:"Not extracted" }}</p>
+                <p><strong>Issue Date:</strong> {{ invoice.issue_date|default:"Not extracted" }}</p>
+                <p><strong>Amount:</strong> {{ invoice.total_amount|default:"Not extracted" }}</p>
+                <p><strong>Vendor:</strong> {{ invoice.vendor_name|default:"Not extracted" }}</p>
+                <p><strong>Vendor Tax ID:</strong> {{ invoice.vendor_tax_id|default:"Not extracted" }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if invoice.json_data %}
+<div class="card">
+    <div class="card-header">
+        <h5>Extracted Data</h5>
+    </div>
+    <div class="card-body">
+        <pre class="bg-light p-3 rounded"><code>{{ invoice.json_data|pprint }}</code></pre>
+    </div>
+</div>
+{% endif %}
+{% endblock %} 

@@ -1,0 +1,54 @@
+{% extends 'invoice_app/base.html' %}
+
+{% block content %}
+<h2>All Invoices</h2>
+
+<div class="mb-3">
+    <a href="{% url 'upload_invoice' %}" class="btn btn-primary">Upload New Invoice</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Invoice Number</th>
+                <th>Date</th>
+                <th>Vendor</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for invoice in invoices %}
+            <tr>
+                <td>{{ invoice.id }}</td>
+                <td>{{ invoice.invoice_number|default:"-" }}</td>
+                <td>{{ invoice.issue_date|default:"-" }}</td>
+                <td>{{ invoice.vendor_name|default:"-" }}</td>
+                <td>{{ invoice.total_amount|default:"-" }}</td>
+                <td>
+                    {% if invoice.status == 'pending' %}
+                        <span class="badge bg-warning">Pending</span>
+                    {% elif invoice.status == 'processing' %}
+                        <span class="badge bg-info">Processing</span>
+                    {% elif invoice.status == 'completed' %}
+                        <span class="badge bg-success">Completed</span>
+                    {% else %}
+                        <span class="badge bg-danger">Failed</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'invoice_detail' invoice.id %}" class="btn btn-sm btn-info">View</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7" class="text-center">No invoices found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %} 

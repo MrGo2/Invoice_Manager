@@ -12,6 +12,8 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Optional, Union
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from src.ocr.confidence_merger import OCRMerger
 from src.ocr.mistral_wrapper import MistralOCR
 from src.ocr.tesseract_fallback import TesseractOCR

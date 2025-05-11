@@ -1,0 +1,42 @@
+{% extends 'invoice_app/base.html' %}
+
+{% block content %}
+<div class="jumbotron bg-light p-5 rounded">
+    <h1 class="display-4">Invoice Manager</h1>
+    <p class="lead">Upload, process, and extract data from invoices automatically.</p>
+    <hr class="my-4">
+    <p>Upload your invoices and let our OCR system extract important information for you.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'upload_invoice' %}" role="button">Upload Invoice</a>
+    <a class="btn btn-secondary btn-lg" href="{% url 'invoice_list' %}" role="button">View Invoices</a>
+</div>
+
+{% if recent_invoices %}
+<div class="mt-5">
+    <h2>Recent Invoices</h2>
+    <div class="list-group">
+        {% for invoice in recent_invoices %}
+            <a href="{% url 'invoice_detail' invoice.id %}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ invoice.invoice_number|default:"Invoice #"|add:invoice.id|stringformat:"s" }}</h5>
+                    <small>{{ invoice.uploaded_at|date:"F j, Y, g:i a" }}</small>
+                </div>
+                <p class="mb-1">Vendor: {{ invoice.vendor_name|default:"Not extracted" }}</p>
+                <p class="mb-1">Amount: {{ invoice.total_amount|default:"Not extracted" }}</p>
+                <small class="text-muted">
+                    Status: 
+                    {% if invoice.status == 'pending' %}
+                        <span class="badge bg-warning">Pending</span>
+                    {% elif invoice.status == 'processing' %}
+                        <span class="badge bg-info">Processing</span>
+                    {% elif invoice.status == 'completed' %}
+                        <span class="badge bg-success">Completed</span>
+                    {% else %}
+                        <span class="badge bg-danger">Failed</span>
+                    {% endif %}
+                </small>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% endblock %} 
