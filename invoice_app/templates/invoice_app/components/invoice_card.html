@@ -1,0 +1,40 @@
+<div class="bg-white overflow-hidden shadow rounded-lg">
+    <div class="px-4 py-5 sm:p-6">
+        <div class="flex items-center">
+            <div class="flex-shrink-0 bg-blue-50 rounded-md p-3">
+                <svg class="h-6 w-6 text-blue-600" viewBox="0 0 24 24" fill="none">
+                    <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16 13H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16 17H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10 9H9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="ml-5 w-0 flex-1">
+                <dl>
+                    <dt class="text-sm font-medium text-gray-500 truncate">{{ invoice.file_name }}</dt>
+                    <dd>
+                        <div class="text-sm text-gray-900">
+                            Uploaded on {{ invoice.upload_date|date:"M d, Y" }}
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="mt-4">
+            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+            {% if invoice.status == 'completed' %}bg-green-100 text-green-800
+            {% elif invoice.status == 'processing' %}bg-blue-100 text-blue-800
+            {% elif invoice.status == 'failed' %}bg-red-100 text-red-800
+            {% else %}bg-yellow-100 text-yellow-800{% endif %}">
+                {{ invoice.get_status_display }}
+            </span>
+        </div>
+        <div class="mt-5">
+            <a href="{% url 'invoice_app:invoice_detail' invoice.id %}" class="text-sm font-medium text-blue-600 hover:text-blue-500">
+                View details
+                <span aria-hidden="true"> &rarr;</span>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.utils import timezone
 from .models import Invoice
 from .forms import InvoiceUploadForm
 import os
@@ -22,7 +23,7 @@ except ImportError:
 
 def home(request):
     # Get the 5 most recent invoices
-    recent_invoices = Invoice.objects.order_by('-uploaded_at')[:5]
+    recent_invoices = Invoice.objects.order_by('-upload_date')[:5]
     return render(request, 'invoice_app/home.html', {'recent_invoices': recent_invoices})
 
 def upload_invoice(request):
@@ -49,7 +50,7 @@ def upload_invoice(request):
     return render(request, 'invoice_app/upload.html', {'form': form})
 
 def invoice_list(request):
-    invoices = Invoice.objects.all().order_by('-uploaded_at')
+    invoices = Invoice.objects.all().order_by('-upload_date')
     return render(request, 'invoice_app/list.html', {'invoices': invoices})
 
 def invoice_detail(request, invoice_id):
@@ -79,13 +80,9 @@ def process_invoice(invoice_id):
         result = processor.process(file_path)
         
         # Update the invoice with extracted data
-        invoice.invoice_number = result.get('invoice_number', '')
-        invoice.issue_date = result.get('issue_date', '')
-        invoice.vendor_name = result.get('vendor_name', '')
-        invoice.vendor_tax_id = result.get('vendor_tax_id', '')
-        invoice.total_amount = result.get('total_amount', '')
-        invoice.json_data = result
+        invoice.extracted_data = result
         invoice.status = 'completed'
+        invoice.processed_date = timezone.now()
         
     except Exception as e:
         invoice.status = 'failed'

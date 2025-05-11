@@ -1,21 +1,131 @@
 {% extends 'invoice_app/base.html' %}
+{% load static %}
+
+{% block title %}Upload Invoice - Invoice Manager{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/upload.js' %}"></script>
+{% endblock %}
 
 {% block content %}
-<h2>Upload Invoice</h2>
-<div class="card">
-    <div class="card-body">
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="{{ form.file.id_for_label }}" class="form-label">Select Invoice File</label>
-                {{ form.file }}
-                {% if form.file.errors %}
-                    <div class="text-danger">{{ form.file.errors }}</div>
-                {% endif %}
-                <div class="form-text">Upload PDF, JPG, PNG, or TIFF files.</div>
+<div class="space-y-6">
+    <div class="flex justify-between items-center">
+        <div>
+            <h2 class="text-2xl font-bold text-gray-900">Upload Invoice</h2>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500">Upload a new invoice for processing</p>
+        </div>
+    </div>
+
+    <div class="bg-white shadow sm:rounded-lg">
+        <div class="px-4 py-5 sm:p-6">
+            <form method="post" enctype="multipart/form-data" id="upload-form" class="space-y-5">
+                {% csrf_token %}
+                
+                <div class="border-2 border-dashed border-gray-300 rounded-lg p-10 text-center" id="dropzone">
+                    <input type="file" name="file" id="id_file" class="hidden" accept=".pdf,.jpg,.jpeg,.png">
+                    <label for="id_file" class="cursor-pointer block">
+                        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                        </svg>
+                        <span class="mt-2 block text-sm font-medium text-gray-700">
+                            Drag and drop your invoice file here, or click to browse
+                        </span>
+                        <span class="mt-2 block text-sm text-gray-500">
+                            PDF, JPG, JPEG, PNG up to 10MB
+                        </span>
+                    </label>
+                </div>
+                
+                <div id="file-preview" class="hidden">
+                    <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-between">
+                        <div class="flex items-center">
+                            <svg class="h-8 w-8 text-gray-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            <div>
+                                <p class="text-sm font-medium text-gray-900" id="file-name"></p>
+                                <p class="text-sm text-gray-500" id="file-size"></p>
+                            </div>
+                        </div>
+                        <button type="button" id="remove-file" class="text-gray-400 hover:text-gray-500">
+                            <span class="sr-only">Remove file</span>
+                            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-end">
+                    <a href="{% url 'invoice_app:invoice_list' %}" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mr-3">
+                        Cancel
+                    </a>
+                    <button type="submit" id="submit-button" class="bg-blue-600 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                        <span id="submit-text">Upload & Process</span>
+                        <span id="loading-spinner" class="hidden">
+                            <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Processing...
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="bg-white shadow sm:rounded-lg">
+        <div class="px-4 py-5 sm:p-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Supported Invoice Types</h3>
+            <div class="mt-2 max-w-xl text-sm text-gray-500">
+                <p>Our system can process the following invoice types:</p>
             </div>
-            <button type="submit" class="btn btn-primary">Upload & Process</button>
-        </form>
+            <div class="mt-5">
+                <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-8">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <svg class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <span class="text-sm font-medium text-gray-900">PDF Invoices</span>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <svg class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <span class="text-sm font-medium text-gray-900">JPG/JPEG Scans</span>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <svg class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <span class="text-sm font-medium text-gray-900">PNG Images</span>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <svg class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <span class="text-sm font-medium text-gray-900">Spanish Invoices</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-{% endblock %} 
+{% endblock %}

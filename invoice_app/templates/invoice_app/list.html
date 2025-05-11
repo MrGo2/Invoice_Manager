@@ -4,7 +4,7 @@
 <h2>All Invoices</h2>
 
 <div class="mb-3">
-    <a href="{% url 'upload_invoice' %}" class="btn btn-primary">Upload New Invoice</a>
+    <a href="{% url 'invoice_app:upload_invoice' %}" class="btn btn-primary">Upload New Invoice</a>
 </div>
 
 <div class="table-responsive">
@@ -12,10 +12,8 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Invoice Number</th>
-                <th>Date</th>
-                <th>Vendor</th>
-                <th>Amount</th>
+                <th>File Name</th>
+                <th>Upload Date</th>
                 <th>Status</th>
                 <th>Actions</th>
             </tr>
@@ -24,10 +22,8 @@
             {% for invoice in invoices %}
             <tr>
                 <td>{{ invoice.id }}</td>
-                <td>{{ invoice.invoice_number|default:"-" }}</td>
-                <td>{{ invoice.issue_date|default:"-" }}</td>
-                <td>{{ invoice.vendor_name|default:"-" }}</td>
-                <td>{{ invoice.total_amount|default:"-" }}</td>
+                <td>{{ invoice.file_name }}</td>
+                <td>{{ invoice.upload_date|date:"F j, Y" }}</td>
                 <td>
                     {% if invoice.status == 'pending' %}
                         <span class="badge bg-warning">Pending</span>
@@ -40,7 +36,7 @@
                     {% endif %}
                 </td>
                 <td>
-                    <a href="{% url 'invoice_detail' invoice.id %}" class="btn btn-sm btn-info">View</a>
+                    <a href="{% url 'invoice_app:invoice_detail' invoice.id %}" class="btn btn-sm btn-info">View</a>
                 </td>
             </tr>
             {% empty %}
