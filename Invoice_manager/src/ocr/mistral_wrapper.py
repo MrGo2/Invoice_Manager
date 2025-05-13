@@ -10,6 +10,7 @@ import base64
 import json
 import tempfile
 import time
+import uuid
 from pathlib import Path
 from typing import Dict, List, Union, Any, Optional
 from datetime import datetime
@@ -193,6 +194,9 @@ class MistralOCR:
             # Store the OCR response in the instance for later use
             self.last_ocr_response = ocr_response
             
+            # Save markdown output to file
+            self.save_ocr_markdown(pdf_path)
+            
             return results
                 
         except Exception as e:
@@ -266,6 +270,9 @@ class MistralOCR:
                     
                     # Store the OCR response
                     self.last_ocr_response = ocr_response
+                    
+                    # Save markdown output to file
+                    self.save_ocr_markdown(image_path)
                     
                     end_time = datetime.now()
                     processing_time = (end_time - start_time).total_seconds() * 1000
@@ -413,6 +420,47 @@ class MistralOCR:
             return [page.markdown for page in self.last_ocr_response.pages]
         return None
     
+    def save_ocr_markdown(self, file_path: Union[str, Path]) -> Optional[str]:
+        """
+        Save the markdown from the last OCR response to a file.
+        
+        Args:
+            file_path: Path to the original document that was processed
+            
+        Returns:
+            Path to the saved markdown file, or None if no OCR response is available
+        """
+        markdown_list = self.get_markdown_from_last_ocr()
+        if not markdown_list:
+            logger.warning("No OCR markdown available to save")
+            return None
+        
+        # Create a filename based on the original file
+        original_filename = Path(file_path).stem
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        unique_id = str(uuid.uuid4())[:8]
+        output_dir = Path("output/ocr_markdown")
+        
+        # Ensure the output directory exists
+        output_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Create the output file path
+        output_file = output_dir / f"{original_filename}_{timestamp}_{unique_id}.md"
+        
+        # Combine all pages and write to file
+        with open(output_file, 'w', encoding='utf-8') as f:
+            f.write(f"# OCR Results for {original_filename}\n\n")
+            f.write(f"Processed: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+            f.write(f"Original file: {file_path}\n\n")
+            
+            for i, markdown in enumerate(markdown_list, 1):
+                f.write(f"## Page {i}\n\n")
+                f.write(markdown)
+                f.write("\n\n")
+        
+        logger.info(f"Saved OCR markdown to {output_file}")
+        return str(output_file)
+    
     def extract_structured_data(self, file_path: Union[str, Path], ocr_text: Optional[str] = None) -> Dict[str, Any]:
         """
         Use Mistral to extract structured data from OCR text based on our invoice schema.
@@ -448,22 +496,38 @@ class MistralOCR:
                             "role": "user",
                             "content": (
                                 "Extract the following information from this Spanish invoice, using EXACTLY these field names and formats:\n\n"
+                                "- invoice_series: Invoice series identifier (if present)\n"
                                 "- invoice_number: The invoice identifier\n"
                                 "- issue_date: Date in DD/MM/YYYY format (e.g., 01/05/2024)\n"
                                 "- vendor_name: Company issuing the invoice\n"
                                 "- vendor_tax_id: Spanish tax ID (NIF/CIF) with format like B12345678\n"
-                                "- vendor_address: Full address of vendor\n"
+                                "- vendor_address: JSON object containing these exact keys: street_type (e.g., Calle, Avenida, Plaza), street_name, street_number, floor (if present), door (if present), postal_code (e.g., 28013), city, province, country (ISO code e.g., ES). Example: {\"street_type\": \"Calle\", \"street_name\": \"Mayor\", \"street_number\": \"1\", \"floor\": \"2\", \"door\": \"B\", \"postal_code\": \"28013\", \"city\": \"Madrid\", \"province\": \"Madrid\", \"country\": \"ES\"}\n"
                                 "- buyer_name: Name of customer\n"
                                 "- buyer_tax_id: Customer tax ID\n"
-                                "- buyer_address: Full address of buyer\n"
+                                "- buyer_address: JSON object containing these exact keys: street_type (e.g., Calle, Avenida, Plaza), street_name, street_number, floor (if present), door (if present), postal_code (e.g., 08019), city, province, country (ISO code e.g., ES). Example: {\"street_type\": \"Avenida\", \"street_name\": \"Diagonal\", \"street_number\": \"15\", \"floor\": \"4\", \"door\": \"2\", \"postal_code\": \"08019\", \"city\": \"Barcelona\", \"province\": \"Barcelona\", \"country\": \"ES\"}\n"
+                                "- currency: EUR, USD, or GBP\n"
                                 "- taxable_base: Base amount before tax, with comma as decimal separator (e.g., 100,50 €)\n"
+                                "- discount_rate: Discount percentage rate applied (e.g., 10%)\n"
+                                "- discount_amount: Discount amount (e.g., 10,50 €)\n"
                                 "- vat_rate: VAT percentage with % symbol (e.g., 21%)\n"
                                 "- vat_amount: VAT amount with comma as decimal separator (e.g., 21,11 €)\n"
+                                "- vat_breakdown: Array of objects with rate, base, and amount for each VAT rate if multiple rates apply\n"
+                                "- total_gross: Total gross amount if present (e.g., 121,61 €)\n"
                                 "- total_amount: Total invoice amount with comma as decimal separator (e.g., 121,61 €)\n"
+                                "- line_items: Array of line items with these fields: line_number (if present), description, item_type (product/service if identifiable), qty, unit_of_measure (if present), unit_price, line_discount_rate (if present), line_tax_rate (if present), line_tax_amount (if present), line_total\n"
                                 "- payment_terms: Payment terms if available\n"
-                                "- currency: EUR, USD, or GBP\n"
-                                "- line_items: Array of items with description, qty, unit_price, and line_total fields\n\n"
-                                f"Here is the invoice text:\n\n{first_page_md}"
+                                "- due_date: Payment due date in DD/MM/YYYY format (if present)\n"
+                                "- payment_method: Method of payment (transfer, sepa, card, cash, check, other) if specified\n"
+                                "- bank_account: Bank account number or IBAN if present\n"
+                                "- swift_bic: SWIFT/BIC code of the bank if present\n"
+                                "- invoice_type: Type of invoice (invoice, simplified, rectification, credit_note, debit_note) if identifiable\n"
+                                "- original_invoice_ref: Reference to original invoice if this is a correction invoice\n"
+                                "- notes: Any important notes on the invoice\n\n"
+                                "IMPORTANT: For 'vendor_address' and 'buyer_address', return a JSON object with these exact keys: street_type, street_name, street_number, floor (if present), door (if present), postal_code, city, province, and country. Examples:\n"
+                                "vendor_address: {\"street_type\": \"Calle\", \"street_name\": \"Mayor\", \"street_number\": \"1\", \"floor\": \"2\", \"door\": \"B\", \"postal_code\": \"28013\", \"city\": \"Madrid\", \"province\": \"Madrid\", \"country\": \"ES\"}\n"
+                                "buyer_address: {\"street_type\": \"Avenida\", \"street_name\": \"Diagonal\", \"street_number\": \"15\", \"floor\": \"4\", \"door\": \"2\", \"postal_code\": \"08019\", \"city\": \"Barcelona\", \"province\": \"Barcelona\", \"country\": \"ES\"}\n\n"
+                                "The OCR text of the invoice is:\n\n"
+                                f"{first_page_md}"
                             )
                         }
                     ],
@@ -473,6 +537,23 @@ class MistralOCR:
                 
                 # Parse the structured data
                 structured_data = json.loads(chat_response.choices[0].message.content)
+                
+                # Ensure address fields are properly formatted as objects
+                for address_field in ['vendor_address', 'buyer_address']:
+                    if address_field in structured_data and isinstance(structured_data[address_field], str):
+                        logger.warning(f"{address_field} was extracted as a string instead of an object. Attempting to fix.")
+                        try:
+                            # Try to parse it as JSON if it looks like a JSON string
+                            if structured_data[address_field].strip().startswith('{') and structured_data[address_field].strip().endswith('}'):
+                                structured_data[address_field] = json.loads(structured_data[address_field])
+                            else:
+                                # Create a basic object with the string as street_name
+                                structured_data[address_field] = {
+                                    "street_name": structured_data[address_field],
+                                    "country": "ES"  # Default country
+                                }
+                        except Exception as e:
+                            logger.error(f"Failed to convert {address_field} to object: {e}")
                 
                 # Add metadata
                 if "metadata" not in structured_data:
@@ -514,6 +595,19 @@ class MistralOCR:
             prompt = (
                 "Extract structured data from this Spanish invoice OCR text according to this schema:\n\n"
                 f"{json.dumps(schema_description, indent=2)}\n\n"
+                "IMPORTANT: For 'vendor_address' and 'buyer_address', return a JSON object with these exact keys: street_type, street_name, street_number, floor (if present), door (if present), postal_code, city, province, and country. Examples:\n"
+                "vendor_address: {\"street_type\": \"Calle\", \"street_name\": \"Mayor\", \"street_number\": \"1\", \"floor\": \"2\", \"door\": \"B\", \"postal_code\": \"28013\", \"city\": \"Madrid\", \"province\": \"Madrid\", \"country\": \"ES\"}\n"
+                "buyer_address: {\"street_type\": \"Avenida\", \"street_name\": \"Diagonal\", \"street_number\": \"15\", \"floor\": \"4\", \"door\": \"2\", \"postal_code\": \"08019\", \"city\": \"Barcelona\", \"province\": \"Barcelona\", \"country\": \"ES\"}\n\n"
+                "Pay special attention to these fields, ensuring they match the exact format:\n"
+                "- invoice_series, invoice_number, issue_date (DD/MM/YYYY format)\n"
+                "- vendor_name, vendor_tax_id (format like B12345678), vendor_address (as JSON object)\n"
+                "- buyer_name, buyer_tax_id, buyer_address (as JSON object)\n"
+                "- taxable_base, discount_rate, discount_amount, vat_rate, vat_amount\n"
+                "- vat_breakdown (array of objects with rate, base, amount fields)\n"
+                "- total_gross, total_amount\n"
+                "- line_items (array with proper structure for each item)\n"
+                "- payment_terms, due_date, payment_method, bank_account, swift_bic\n"
+                "- invoice_type, original_invoice_ref, notes\n\n"
                 "The OCR text of the invoice is:\n\n"
                 f"{ocr_text}\n\n"
                 "Return ONLY a valid JSON object with the extracted fields according to the schema. "
@@ -530,6 +624,24 @@ class MistralOCR:
             
             # Parse initial extraction
             structured_data = json.loads(response.choices[0].message.content)
+            
+            # Ensure address fields are properly formatted as objects
+            for address_field in ['vendor_address', 'buyer_address']:
+                if address_field in structured_data and isinstance(structured_data[address_field], str):
+                    logger.warning(f"{address_field} was extracted as a string instead of an object. Attempting to fix.")
+                    try:
+                        # Try to parse it as JSON if it looks like a JSON string
+                        if structured_data[address_field].strip().startswith('{') and structured_data[address_field].strip().endswith('}'):
+                            structured_data[address_field] = json.loads(structured_data[address_field])
+                        else:
+                            # Create a basic object with the string as street_name
+                            structured_data[address_field] = {
+                                "street_name": structured_data[address_field],
+                                "country": "ES"  # Default country
+                            }
+                    except Exception as e:
+                        logger.error(f"Failed to convert {address_field} to object: {e}")
+            
             confidence = 0.85  # Base confidence with text-only model
             
             # If text-only extraction misses critical fields, try with vision model
@@ -543,8 +655,21 @@ class MistralOCR:
                 vision_prompt = (
                     "This is a Spanish invoice image. Extract ALL the structured data according to this schema:\n\n"
                     f"{json.dumps(schema_description, indent=2)}\n\n"
-                    "For reference, this is the OCR text already extracted:\n\n"
-                    f"{ocr_text[:500]}...\n\n"
+                    "IMPORTANT: For 'vendor_address' and 'buyer_address', return a JSON object with these exact keys: street_type, street_name, street_number, floor (if present), door (if present), postal_code, city, province, and country. Examples:\n"
+                    "vendor_address: {\"street_type\": \"Calle\", \"street_name\": \"Mayor\", \"street_number\": \"1\", \"floor\": \"2\", \"door\": \"B\", \"postal_code\": \"28013\", \"city\": \"Madrid\", \"province\": \"Madrid\", \"country\": \"ES\"}\n"
+                    "buyer_address: {\"street_type\": \"Avenida\", \"street_name\": \"Diagonal\", \"street_number\": \"15\", \"floor\": \"4\", \"door\": \"2\", \"postal_code\": \"08019\", \"city\": \"Barcelona\", \"province\": \"Barcelona\", \"country\": \"ES\"}\n\n"
+                    "Pay special attention to these fields, ensuring they match the exact format:\n"
+                    "- invoice_series, invoice_number, issue_date (DD/MM/YYYY format)\n"
+                    "- vendor_name, vendor_tax_id (format like B12345678), vendor_address (as JSON object)\n"
+                    "- buyer_name, buyer_tax_id, buyer_address (as JSON object)\n"
+                    "- taxable_base, discount_rate, discount_amount, vat_rate, vat_amount\n"
+                    "- vat_breakdown (array of objects with rate, base, amount fields)\n"
+                    "- total_gross, total_amount\n"
+                    "- line_items (array with proper structure for each item)\n"
+                    "- payment_terms, due_date, payment_method, bank_account, swift_bic\n"
+                    "- invoice_type, original_invoice_ref, notes\n\n"
+                    "The OCR text of the invoice is shown below (first 1000 characters):\n\n"
+                    f"{ocr_text[:1000]}...\n\n"
                     "Return ONLY a valid JSON object with the extracted fields. Pay special attention to "
                     f"these missing fields: {', '.join(missing_fields)}."
                 )
@@ -566,6 +691,23 @@ class MistralOCR:
                 
                 try:
                     vision_data = json.loads(vision_response.choices[0].message.content)
+                    
+                    # Ensure address fields are properly formatted as objects in vision data
+                    for address_field in ['vendor_address', 'buyer_address']:
+                        if address_field in vision_data and isinstance(vision_data[address_field], str):
+                            logger.warning(f"{address_field} was extracted as a string instead of an object in vision data. Attempting to fix.")
+                            try:
+                                # Try to parse it as JSON if it looks like a JSON string
+                                if vision_data[address_field].strip().startswith('{') and vision_data[address_field].strip().endswith('}'):
+                                    vision_data[address_field] = json.loads(vision_data[address_field])
+                                else:
+                                    # Create a basic object with the string as street_name
+                                    vision_data[address_field] = {
+                                        "street_name": vision_data[address_field],
+                                        "country": "ES"  # Default country
+                                    }
+                            except Exception as e:
+                                logger.error(f"Failed to convert {address_field} to object in vision data: {e}")
                     
                     # Merge results, preferring vision model for previously missing fields
                     for field in missing_fields:

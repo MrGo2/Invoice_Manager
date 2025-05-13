@@ -1,0 +1,119 @@
+2025-05-12 20:20:30,057 - test_error_trace - INFO - Successfully imported required modules
+2025-05-12 20:20:30,057 - test_error_trace - INFO - ================================================================================
+2025-05-12 20:20:30,057 - test_error_trace - INFO - STARTING TEST: Processing ./invoices/invoice-5.pdf
+2025-05-12 20:20:30,057 - test_error_trace - INFO - ================================================================================
+2025-05-12 20:20:30,057 - test_error_trace - INFO - File exists and is accessible: invoices/invoice-5.pdf
+2025-05-12 20:20:30,057 - test_error_trace - INFO - File size: 165876 bytes
+2025-05-12 20:20:30,057 - test_error_trace - INFO - File format: .pdf
+2025-05-12 20:20:30,057 - test_error_trace - INFO - Loading configuration...
+2025-05-12 20:20:30,059 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-12 20:20:30,059 - test_error_trace - INFO - Preprocessing enabled: False
+2025-05-12 20:20:30,059 - test_error_trace - INFO - OCR engine: mistral
+2025-05-12 20:20:30,059 - test_error_trace - INFO - Using Mistral structured extraction: True
+2025-05-12 20:20:30,059 - test_error_trace - INFO - Using direct PDF processing: True
+2025-05-12 20:20:30,059 - test_error_trace - INFO - Initializing invoice processor...
+2025-05-12 20:20:30,061 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-12 20:20:30,061 - src.preprocessing.image_processor - INFO - Image preprocessing is disabled. Files will be processed without preprocessing steps.
+2025-05-12 20:20:30,084 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-12 20:20:30,105 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-12 20:20:30,105 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 20:20:30,105 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-12 20:20:30,110 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-12 20:20:30,110 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-12 20:20:30,110 - src.main - INFO - Invoice Processor initialized
+2025-05-12 20:20:30,110 - test_error_trace - INFO - Processor initialized successfully
+2025-05-12 20:20:30,110 - test_error_trace - INFO - Is PDF file: True
+2025-05-12 20:20:30,110 - test_error_trace - INFO - Will use direct PDF processing: True
+2025-05-12 20:20:30,110 - test_error_trace - INFO - Processing with:
+2025-05-12 20:20:30,110 - test_error_trace - INFO - - Mistral structured: True
+2025-05-12 20:20:30,110 - test_error_trace - INFO - - Direct PDF: True
+2025-05-12 20:20:30,110 - test_error_trace - INFO - Starting invoice processing...
+2025-05-12 20:20:30,111 - test_error_trace - INFO - Successfully read file header: 1024 bytes
+2025-05-12 20:20:30,112 - src.utils.cfg - INFO - Configuration loaded from config.yaml
+2025-05-12 20:20:30,112 - src.preprocessing.image_processor - INFO - Image preprocessing is disabled. Files will be processed without preprocessing steps.
+2025-05-12 20:20:30,120 - src.ocr.mistral_wrapper - INFO - Initialized Mistral OCR with model: mistral-large-vision-latest
+2025-05-12 20:20:30,129 - src.ocr.tesseract_fallback - INFO - Initialized Tesseract OCR with language: spa
+2025-05-12 20:20:30,129 - src.ocr.confidence_merger - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 20:20:30,129 - src.extraction.field_locator - INFO - Initialized field locator with heuristic patterns
+2025-05-12 20:20:30,134 - src.extraction.openai_refiner - INFO - Initialized OpenAI refiner with model: gpt-4o
+2025-05-12 20:20:30,134 - src.validation.schema_validator - INFO - Initialized schema validator with schema: schemas/invoice.json
+2025-05-12 20:20:30,134 - src.main - INFO - Invoice Processor initialized
+2025-05-12 20:20:30,137 - httpcore.connection - DEBUG - connect_tcp.started host='api.mistral.ai' port=443 local_address=None timeout=None socket_options=None
+2025-05-12 20:20:30,155 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x122a2c440>
+2025-05-12 20:20:30,155 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x122147da0> server_hostname='api.mistral.ai' timeout=None
+2025-05-12 20:20:30,180 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x1221ea490>
+2025-05-12 20:20:30,180 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-05-12 20:20:30,181 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-05-12 20:20:30,181 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-05-12 20:20:30,226 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-05-12 20:20:30,226 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-05-12 20:20:30,743 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Mon, 12 May 2025 18:20:30 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'x-envoy-upstream-service-time', b'123'), (b'access-control-allow-origin', b'*'), (b'x-kong-upstream-latency', b'394'), (b'x-kong-proxy-latency', b'6'), (b'x-kong-request-id', b'84723639e83c0d494d27391235c0b468'), (b'cf-cache-status', b'DYNAMIC'), (b'Set-Cookie', b'__cf_bm=x0ssdRcqMRtUyF_l0FGoI9Bz5Xqp18y31dfh7CdehYA-1747074030-1.0.1.1-1.NdWA6aj5g8UZGYlmGCv6n10cr_9DATSfAXTSWkGc92SjuE9321uvWpq8gnYnoYcFYQW.nkx99N4ZUhCcNebxqi.XM96x.go7dfrYMuEek; path=/; expires=Mon, 12-May-25 18:50:30 GMT; domain=.mistral.ai; HttpOnly; Secure; SameSite=None'), (b'Set-Cookie', b'_cfuvid=KrFQjfHclH7mcCYzxfTkSvaVMP.l21peo5frq31zZ3k-1747074030781-0.0.1.1-604800000; path=/; domain=.mistral.ai; HttpOnly; Secure; SameSite=None'), (b'Server', b'cloudflare'), (b'CF-RAY', b'93ebee30fb8fcc44-MAD'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-05-12 20:20:30,745 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/files "HTTP/1.1 200 OK"
+2025-05-12 20:20:30,746 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-05-12 20:20:30,746 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-05-12 20:20:30,746 - httpcore.http11 - DEBUG - response_closed.started
+2025-05-12 20:20:30,746 - httpcore.http11 - DEBUG - response_closed.complete
+2025-05-12 20:20:30,750 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2025-05-12 20:20:30,750 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-05-12 20:20:30,751 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2025-05-12 20:20:30,751 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-05-12 20:20:30,751 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2025-05-12 20:20:30,962 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Mon, 12 May 2025 18:20:31 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'x-envoy-upstream-service-time', b'131'), (b'access-control-allow-origin', b'*'), (b'x-kong-upstream-latency', b'131'), (b'x-kong-proxy-latency', b'7'), (b'x-kong-request-id', b'2df9051d486990029986cc408a1c5a2e'), (b'cf-cache-status', b'DYNAMIC'), (b'Server', b'cloudflare'), (b'CF-RAY', b'93ebee348f83cc44-MAD'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-05-12 20:20:30,962 - httpx - INFO - HTTP Request: GET https://api.mistral.ai/v1/files/edf6786b-b94f-4c14-bd1f-0a8363f6b579/url?expiry=24 "HTTP/1.1 200 OK"
+2025-05-12 20:20:30,963 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2025-05-12 20:20:30,963 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-05-12 20:20:30,963 - httpcore.http11 - DEBUG - response_closed.started
+2025-05-12 20:20:30,963 - httpcore.http11 - DEBUG - response_closed.complete
+2025-05-12 20:20:30,969 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-05-12 20:20:30,970 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-05-12 20:20:30,970 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-05-12 20:20:30,970 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-05-12 20:20:30,970 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-05-12 20:20:34,136 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Mon, 12 May 2025 18:20:34 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'x-ratelimitbysize-limit-minute', b'500000'), (b'ratelimitbysize-query-cost', b'0'), (b'x-ratelimitbysize-remaining-month', b'998953494'), (b'ratelimitbysize-remaining', b'500000'), (b'ratelimitbysize-limit', b'500000'), (b'ratelimitbysize-reset', b'29'), (b'x-ratelimitbysize-limit-month', b'1000000000'), (b'x-ratelimitbysize-remaining-minute', b'500000'), (b'x-envoy-upstream-service-time', b'2888'), (b'access-control-allow-origin', b'*'), (b'x-kong-upstream-latency', b'2890'), (b'x-kong-proxy-latency', b'5'), (b'x-kong-request-id', b'975384371e5dc11c2ac5720620d4700a'), (b'cf-cache-status', b'DYNAMIC'), (b'Server', b'cloudflare'), (b'CF-RAY', b'93ebee35f928cc44-MAD'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-05-12 20:20:34,137 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/ocr "HTTP/1.1 200 OK"
+2025-05-12 20:20:34,137 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-05-12 20:20:34,137 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-05-12 20:20:34,138 - httpcore.http11 - DEBUG - response_closed.started
+2025-05-12 20:20:34,138 - httpcore.http11 - DEBUG - response_closed.complete
+2025-05-12 20:20:34,139 - src.ocr.mistral_wrapper - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 4005.19ms
+2025-05-12 20:20:34,140 - src.ocr.mistral_wrapper - INFO - Using native OCR results for structured extraction
+2025-05-12 20:20:34,146 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-05-12 20:20:34,147 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-05-12 20:20:34,147 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-05-12 20:20:34,147 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-05-12 20:20:34,147 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-05-12 20:20:42,174 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Mon, 12 May 2025 18:20:42 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'x-ratelimitbysize-limit-minute', b'500000'), (b'ratelimitbysize-query-cost', b'32812'), (b'x-ratelimitbysize-remaining-month', b'999506226'), (b'ratelimitbysize-remaining', b'467188'), (b'ratelimitbysize-limit', b'500000'), (b'ratelimitbysize-reset', b'26'), (b'x-ratelimitbysize-limit-month', b'1000000000'), (b'x-ratelimitbysize-remaining-minute', b'467188'), (b'x-envoy-upstream-service-time', b'7929'), (b'access-control-allow-origin', b'*'), (b'x-kong-upstream-latency', b'7930'), (b'x-kong-proxy-latency', b'6'), (b'x-kong-request-id', b'fd76173452f692145ac8bd7306f4e262'), (b'cf-cache-status', b'DYNAMIC'), (b'Server', b'cloudflare'), (b'CF-RAY', b'93ebee49ccb9cc44-MAD'), (b'Content-Encoding', b'gzip'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2025-05-12 20:20:42,175 - httpx - INFO - HTTP Request: POST https://api.mistral.ai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-12 20:20:42,175 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-05-12 20:20:42,176 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-05-12 20:20:42,176 - httpcore.http11 - DEBUG - response_closed.started
+2025-05-12 20:20:42,176 - httpcore.http11 - DEBUG - response_closed.complete
+2025-05-12 20:20:42,178 - src.ocr.mistral_wrapper - INFO - Extracted 16 fields using Mistral OCR + LLM structure extraction
+2025-05-12 20:20:42,178 - src.validation.schema_validator - INFO - Validating extracted invoice data against schema
+2025-05-12 20:20:42,185 - src.validation.schema_validator - ERROR - Schema validation failed: vendor_tax_id - 'Not provided' does not match '^[A-Z0-9]\\d{7}[A-Z0-9]$'
+2025-05-12 20:20:42,187 - src.export.writers - INFO - Exported invoice data to JSON: output/invoice-5_result.json
+2025-05-12 20:20:42,187 - test_error_trace - INFO - Processing completed in 12.08 seconds
+2025-05-12 20:20:42,187 - test_error_trace - INFO - Processing successful - extracted 16 fields
+2025-05-12 20:20:42,187 - test_error_trace - INFO - Field 'invoice_number': DS-ASE-INV-ES-2024-33264305
+2025-05-12 20:20:42,187 - test_error_trace - INFO - Field 'issue_date': 28/04/2024
+2025-05-12 20:20:42,187 - test_error_trace - INFO - Field 'vendor_name': HONG KONG UGREEN LIMITED
+2025-05-12 20:20:42,187 - test_error_trace - INFO - Field 'total_amount': 69,99 €
+2025-05-12 20:20:42,187 - test_error_trace - INFO - Metadata:
+2025-05-12 20:20:42,187 - test_error_trace - INFO -   source_file: invoice-5.pdf
+2025-05-12 20:20:42,187 - test_error_trace - INFO -   processing_duration_ms: 12051
+2025-05-12 20:20:42,187 - test_error_trace - INFO -   extraction_method: mistral_direct_pdf
+2025-05-12 20:20:42,187 - test_error_trace - INFO -   ocr_engine: mistral_ocr_native
+2025-05-12 20:20:42,187 - test_error_trace - INFO -   confidence_score: 0.95
+2025-05-12 20:20:42,187 - test_error_trace - INFO -   validation_errors: [{'path': 'vendor_tax_id', 'message': "'Not provided' does not match '^[A-Z0-9]\\\\d{7}[A-Z0-9]$'"}]
+2025-05-12 20:20:42,187 - test_error_trace - INFO -   validation_warnings: []
+2025-05-12 20:20:42,187 - test_error_trace - INFO -   validation_passed: False
+2025-05-12 20:20:42,187 - test_error_trace - INFO -   preprocessing_enabled: False
+2025-05-12 20:20:42,188 - test_error_trace - INFO - Result saved to test_result_invoice-5.json
+2025-05-12 20:20:42,188 - test_error_trace - INFO - ================================================================================
+2025-05-12 20:20:42,188 - test_error_trace - INFO - TEST COMPLETED in 12.13 seconds
+2025-05-12 20:20:42,188 - test_error_trace - INFO - ================================================================================
+2025-05-12 20:20:42,188 - test_error_trace - INFO - Check test_error_trace.log for full details
+2025-05-12 20:20:42,188 - httpcore.connection - DEBUG - close.started
+2025-05-12 20:20:42,188 - httpcore.connection - DEBUG - close.complete
+2025-05-12 20:20:42,188 - asyncio - DEBUG - Using selector: KqueueSelector
+2025-05-12 20:20:42,194 - asyncio - DEBUG - Using selector: KqueueSelector

@@ -13,6 +13,7 @@ input:
 # OCR settings
 ocr:
   preprocessing:
+    enable_preprocessing: false  # Set to false to disable preprocessing
     dpi: 300
     deskew: true
     denoise: true

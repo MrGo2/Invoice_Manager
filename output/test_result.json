@@ -1,32 +1,57 @@
 {
-  "invoice_number": "DS-ASE-INV-ES-2024-33264305",
-  "issue_date": "28/04/2024",
-  "vendor_name": "HONG KONG UGREEN LIMITED",
-  "vendor_tax_id": "LU19647148",
-  "vendor_address": "3 TAI YU STREET, SAN PO KONG, KL, HONG KONG, HONG KONG, 999077 HK",
-  "buyer_name": "Carlos Lorenzo",
-  "buyer_tax_id": "N/A",
-  "buyer_address": "Avenida Isabel de Valois 90, Bajo A, Madrid, Madrid, 28050, ES",
+  "invoice_number": "05-ASE-INV-ES-2024-33264321",
+  "issue_date": "2024/04/2028",
+  "vendor": {
+    "name": "Comfort Click Ltd",
+    "tax_id": "LU19647148",
+    "address": {
+      "street_name": "Lower Addiscombe Road",
+      "street_number": "106",
+      "city": "CROYDON",
+      "postal_code": "CR0 6AD",
+      "country": "GB"
+    }
+  },
+  "buyer": {
+    "name": "Carlos Lorenzo",
+    "tax_id": null,
+    "address": {
+      "street_name": "Avenida Isabel de Valois",
+      "street_number": "90, Bajo A",
+      "city": "Madrid",
+      "postal_code": "28050",
+      "country": "ES"
+    }
+  },
+  "currency": "EUR",
   "line_items": [
     {
-      "description": "UGREEN Revodok Pro 210 Docking Station USB C 10 En 1 Doble HDMI 8K30Hz 4K60Hz Hub Adaptador USB C a 2 HDMI Ethernet Gigabit USB 3.0 PD 100W Lector Tarjeta SD TF Compatible con MacBook Pro Air M2 M1",
-      "qty": "1",
-      "unit_price": "57,84 €",
-      "line_total": "69,99 €",
-      "line_tax_rate": "21%",
-      "line_tax_amount": "12,15 €"
+      "description": "Vinagre de Sidra de Manzana con la Madre 1860mg de Potencia 180 Cápsulas Veganas - Con Probióticos, Cúrcuma, Jengibre y Pimienta de Cayena, Suplemento Dietético Natural Para 2 Meses",
+      "qty": 1,
+      "unit_price": 14.08,
+      "line_total": 15.49,
+      "vat_rate": "10%",
+      "item_type": "product",
+      "currency": "EUR"
     }
   ],
-  "taxable_base": "57,84 €",
-  "vat_rate": "21%",
-  "vat_amount": "12,15 €",
-  "total_amount": "69,99 €",
-  "payment_terms": "Pago pendiente",
-  "currency": "EUR",
+  "taxable_base": 14.08,
+  "vat_amount": 1.41,
+  "vat_rate": "10%",
+  "total_amount": 15.49,
+  "payment_terms": {
+    "method": "recibo_domiciliado",
+    "due_date": null
+  },
   "metadata": {
     "source_file": "invoice-5.pdf",
     "ocr_engine": "hybrid",
-    "extraction_timestamp": "2025-05-08T17:36:59.662974",
-    "confidence_score": 0.9351470588235293
-  }
+    "extraction_timestamp": "2025-05-12T18:48:52.767555",
+    "confidence_score": 0.95
+  },
+  "vendor_name": "N/A",
+  "vendor_tax_id": "N/A",
+  "vendor_address": "N/A",
+  "buyer_name": "N/A",
+  "buyer_tax_id": "N/A"
 }

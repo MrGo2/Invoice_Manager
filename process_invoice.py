@@ -45,10 +45,18 @@ def process_single_invoice(invoice_path, output_path=None, format="json", config
         config_path: Path to custom config file
         use_mistral_structured: Whether to use Mistral's structured extraction
         direct_pdf_processing: Whether to use direct PDF processing for PDF files
+        
+    Returns:
+        A dictionary containing the structured invoice data or error information
     """
     try:
         # Initialize processor
         processor = InvoiceProcessor(config_path)
+        
+        # Check if preprocessing is enabled in the config
+        preprocessing_enabled = processor.config["ocr"]["preprocessing"].get("enable_preprocessing", True)
+        if not preprocessing_enabled:
+            print("Image preprocessing is disabled in config.")
         
         # Process invoice
         print(f"Processing invoice: {invoice_path}")
@@ -61,6 +69,11 @@ def process_single_invoice(invoice_path, output_path=None, format="json", config
         if use_mistral_structured:
             # Use the enhanced Mistral OCR + structured extraction
             start_time = datetime.now()
+            
+            # Initialize variables to avoid UnboundLocalError
+            preprocessed_images = None
+            ocr_results = None
+            structured_data = None
             
             if use_direct_pdf:
                 # For PDFs, use direct Mistral OCR processing without conversion to images
@@ -76,21 +89,25 @@ def process_single_invoice(invoice_path, output_path=None, format="json", config
                 
             else:
                 # For images or when direct PDF processing is disabled, use the standard flow
-            # 1. Preprocess the image (this converts PDFs to images)
+                # 1. Preprocess the image (this converts PDFs to images)
                 preprocessed_images = processor.image_processor.process(str(invoice_path))
-            if not preprocessed_images:
-                raise RuntimeError("Failed to preprocess invoice images")
-                
-            # 2. Run OCR on the first preprocessed image
+                if not preprocessed_images:
+                    raise RuntimeError("Failed to preprocess invoice images")
+                    
+                # 2. Run OCR on the first preprocessed image
                 ocr_results = processor.mistral_ocr.run_ocr(preprocessed_images[0])
                 ocr_text = processor.mistral_ocr.get_text_from_results(ocr_results)
             
-            # 3. Use Mistral's structured extraction capability
+                # 3. Use Mistral's structured extraction capability
                 structured_data = processor.mistral_ocr.extract_structured_data(
-                preprocessed_images[0], 
-                ocr_text
-            )
+                    preprocessed_images[0], 
+                    ocr_text
+                )
             
+            # Check if structured_data was successfully generated
+            if not structured_data or not isinstance(structured_data, dict):
+                raise ValueError(f"Failed to extract structured data. Result: {structured_data}")
+                
             # 4. Validate the structured data
             is_valid = processor.validator.validate(structured_data)
             
@@ -108,7 +125,8 @@ def process_single_invoice(invoice_path, output_path=None, format="json", config
                 structured_data["metadata"].update({
                     "source_file": invoice_path.name,
                     "processing_duration_ms": int(processing_time),
-                    "extraction_method": method
+                    "extraction_method": method,
+                    "preprocessing_enabled": preprocessing_enabled
                 })
                 
                 result = structured_data
@@ -117,6 +135,10 @@ def process_single_invoice(invoice_path, output_path=None, format="json", config
         else:
             # Use the standard processing pipeline
             result = processor.process(str(invoice_path))
+            
+            # Check if result is valid
+            if not result or not isinstance(result, dict):
+                raise ValueError(f"Standard processing pipeline failed. Result: {result}")
         
         # Export result
         if output_path:
@@ -138,7 +160,22 @@ def process_single_invoice(invoice_path, output_path=None, format="json", config
         print(f"Error processing invoice: {e}")
         import traceback
         traceback.print_exc()
-        return None
+        
+        # Return a structured error response instead of None
+        error_result = {
+            "invoice_number": "ERROR",
+            "issue_date": "ERROR",
+            "vendor_name": "ERROR",
+            "total_amount": "ERROR",
+            "metadata": {
+                "source_file": Path(invoice_path).name if 'invoice_path' in locals() else "unknown",
+                "ocr_engine": "error",
+                "confidence_score": 0.0,
+                "error": str(e),
+                "error_type": type(e).__name__
+            }
+        }
+        return error_result
 
 def batch_process_invoices(directory_path, output_dir=None, format="json", config_path=None, 
                           use_mistral_structured=True, direct_pdf_processing=True):
@@ -152,6 +189,9 @@ def batch_process_invoices(directory_path, output_dir=None, format="json", confi
         config_path: Path to custom config file
         use_mistral_structured: Whether to use Mistral's structured extraction
         direct_pdf_processing: Whether to use direct PDF processing for PDF files
+        
+    Returns:
+        A list of structured invoice data dictionaries or an error result dictionary
     """
     try:
         # Initialize processor
@@ -207,7 +247,22 @@ def batch_process_invoices(directory_path, output_dir=None, format="json", confi
         
     except Exception as e:
         print(f"Error batch processing invoices: {e}")
-        return None
+        import traceback
+        traceback.print_exc()
+        
+        # Return a structured error response instead of None
+        error_result = [{
+            "invoice_number": "BATCH_ERROR",
+            "issue_date": "ERROR",
+            "vendor_name": "ERROR",
+            "total_amount": "ERROR",
+            "metadata": {
+                "source_directory": str(directory_path) if 'directory_path' in locals() else "unknown",
+                "error": str(e),
+                "error_type": type(e).__name__
+            }
+        }]
+        return error_result
 
 def main():
     """Parse command line arguments and call appropriate processing function."""

@@ -35,13 +35,17 @@ class ImageProcessor:
             config: Configuration dictionary
         """
         self.config = config
+        self.enable_preprocessing = config["ocr"]["preprocessing"].get("enable_preprocessing", True)
         self.target_dpi = config["ocr"]["preprocessing"]["dpi"]
         self.deskew = config["ocr"]["preprocessing"]["deskew"]
         self.denoise = config["ocr"]["preprocessing"]["denoise"]
         self.contrast_enhancement = config["ocr"]["preprocessing"]["contrast_enhancement"]
         self.allowed_formats = config["input"]["allowed_formats"]
         
-        logger.info(f"Initialized image processor with target DPI: {self.target_dpi}")
+        if self.enable_preprocessing:
+            logger.info(f"Initialized image processor with target DPI: {self.target_dpi}")
+        else:
+            logger.info("Image preprocessing is disabled. Files will be processed without preprocessing steps.")
     
     def process(self, file_path: Union[str, Path]) -> List[str]:
         """
@@ -74,10 +78,16 @@ class ImageProcessor:
             image.save(temp_path)
             image_paths = [temp_path]
         
-        # Apply preprocessing to each image
+        # Apply preprocessing to each image if enabled
         processed_paths = []
         for img_path in image_paths:
-            processed_path = self._preprocess_image(img_path)
+            if self.enable_preprocessing:
+                processed_path = self._preprocess_image(img_path)
+            else:
+                # Skip preprocessing but still return the path
+                logger.debug(f"Preprocessing disabled, returning original image: {img_path}")
+                processed_path = img_path
+                
             processed_paths.append(processed_path)
         
         logger.info(f"Processed {len(processed_paths)} images")
@@ -131,6 +141,10 @@ class ImageProcessor:
         """
         logger.debug(f"Preprocessing image: {image_path}")
         
+        # If preprocessing is disabled, return the original path
+        if not self.enable_preprocessing:
+            return image_path
+            
         try:
             # Read the image with OpenCV
             img = cv2.imread(image_path)

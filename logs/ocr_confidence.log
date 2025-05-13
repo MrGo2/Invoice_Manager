@@ -30,3 +30,107 @@
 2025-05-08 20:03:10 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 2578.39ms
 2025-05-08 21:14:01 - INFO - Initialized OCR merger with strategy: highest_confidence
 2025-05-08 21:14:04 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 2856.56ms
+2025-05-12 17:08:38 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 17:08:40 - INFO - Mistral OCR processed 178 words across 1 pages with confidence: 0.95 in 2052.20ms
+2025-05-12 17:15:21 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 17:15:23 - INFO - Mistral OCR processed 178 words across 1 pages with confidence: 0.95 in 2006.19ms
+2025-05-12 17:16:02 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 17:16:04 - INFO - Mistral OCR processed 178 words across 1 pages with confidence: 0.95 in 1546.26ms
+2025-05-12 17:21:51 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 17:21:54 - INFO - Mistral OCR processed 178 words across 1 pages with confidence: 0.95 in 2737.80ms
+2025-05-12 17:27:22 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 17:27:25 - INFO - Mistral OCR processed 178 words across 1 pages with confidence: 0.95 in 2356.32ms
+2025-05-12 17:29:49 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 17:29:52 - INFO - Mistral OCR processed 178 words across 1 pages with confidence: 0.95 in 2499.34ms
+2025-05-12 18:33:06 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 18:33:08 - INFO - Mistral OCR processed 166 words across 1 pages with confidence: 0.95 in 1967.84ms
+2025-05-12 18:36:45 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 18:36:48 - INFO - Mistral OCR processed 178 words across 1 pages with confidence: 0.95 in 2114.64ms
+2025-05-12 16:40:25 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 16:40:27 - INFO - Mistral OCR processed 178 words across 1 pages with confidence: 0.95 in 1730.98ms
+2025-05-12 18:48:28 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 18:48:36 - INFO - Mistral OCR processed 430 words with confidence: 0.95 in 6730.94ms
+2025-05-12 18:48:37 - INFO - Tesseract OCR processed 225 words with average confidence: 0.94
+2025-05-12 18:48:40 - INFO - Mistral OCR processed 407 words with confidence: 0.95 in 3436.64ms
+2025-05-12 18:48:41 - INFO - Tesseract OCR processed 204 words with average confidence: 0.94
+2025-05-12 18:48:58 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 18:49:11 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 16:49:31 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 16:49:33 - INFO - Mistral OCR processed 178 words across 1 pages with confidence: 0.95 in 1897.20ms
+2025-05-12 18:49:43 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 16:50:22 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 16:50:24 - INFO - Mistral OCR processed 166 words across 1 pages with confidence: 0.95 in 2188.97ms
+2025-05-12 18:50:28 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 16:52:27 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 16:52:29 - INFO - Mistral OCR processed 172 words across 2 pages with confidence: 0.95 in 1514.61ms
+2025-05-12 18:53:50 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 18:53:53 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 2957.72ms
+2025-05-12 18:54:02 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 18:54:06 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 3316.70ms
+2025-05-12 18:54:36 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 18:54:39 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 2658.51ms
+2025-05-12 16:56:20 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 16:56:22 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 2706.08ms
+2025-05-12 16:59:54 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 16:59:57 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 2977.84ms
+2025-05-12 17:05:00 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 17:05:03 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 3046.38ms
+2025-05-12 17:23:23 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 17:23:28 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 4866.57ms
+2025-05-12 17:30:46 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 17:30:48 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 2638.03ms
+2025-05-12 17:48:38 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 17:48:40 - INFO - Mistral OCR processed 166 words across 1 pages with confidence: 0.95 in 2332.30ms
+2025-05-12 17:53:24 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 17:53:25 - INFO - Mistral OCR processed 178 words across 1 pages with confidence: 0.95 in 1696.16ms
+2025-05-12 17:58:12 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 17:58:15 - INFO - Mistral OCR processed 976 words across 5 pages with confidence: 0.95 in 3111.84ms
+2025-05-12 18:02:40 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 18:02:42 - INFO - Mistral OCR processed 456 words across 3 pages with confidence: 0.95 in 1810.50ms
+2025-05-12 20:06:09 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 18:06:56 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 18:06:58 - INFO - Mistral OCR processed 178 words across 1 pages with confidence: 0.95 in 1981.04ms
+2025-05-12 18:09:12 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 18:09:14 - INFO - Mistral OCR processed 456 words across 3 pages with confidence: 0.95 in 1715.38ms
+2025-05-12 18:15:24 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 18:15:26 - INFO - Mistral OCR processed 178 words across 1 pages with confidence: 0.95 in 1903.87ms
+2025-05-12 18:18:54 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 18:18:57 - INFO - Mistral OCR processed 456 words across 3 pages with confidence: 0.95 in 2283.58ms
+2025-05-12 20:20:30 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 20:20:30 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 20:20:34 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 4005.19ms
+2025-05-12 18:33:15 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 18:33:18 - INFO - Mistral OCR processed 847 words across 2 pages with confidence: 0.95 in 2640.98ms
+2025-05-12 18:35:19 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 18:35:21 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 2659.07ms
+2025-05-12 18:42:10 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 18:42:14 - INFO - Mistral OCR processed 847 words across 2 pages with confidence: 0.95 in 3843.49ms
+2025-05-12 19:53:42 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 19:53:45 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 2998.00ms
+2025-05-12 19:55:49 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 19:55:53 - INFO - Mistral OCR processed 847 words across 2 pages with confidence: 0.95 in 3952.44ms
+2025-05-12 19:57:01 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 19:57:05 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 4529.41ms
+2025-05-12 20:00:47 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 20:00:50 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 3055.10ms
+2025-05-12 20:08:02 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 20:08:05 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 2768.68ms
+2025-05-12 20:32:00 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 20:32:02 - INFO - Mistral OCR processed 456 words across 3 pages with confidence: 0.95 in 1817.12ms
+2025-05-12 22:36:14 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 22:36:19 - INFO - Mistral OCR processed 847 words across 2 pages with confidence: 0.95 in 4835.48ms
+2025-05-12 20:39:06 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 20:39:12 - INFO - Mistral OCR processed 847 words across 2 pages with confidence: 0.95 in 5381.90ms
+2025-05-12 20:39:51 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 20:39:54 - INFO - Mistral OCR processed 268 words across 1 pages with confidence: 0.95 in 3083.37ms
+2025-05-12 20:40:52 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 20:40:53 - INFO - Mistral OCR processed 456 words across 3 pages with confidence: 0.95 in 1716.28ms
+2025-05-12 21:15:31 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 21:15:37 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 5719.59ms
+2025-05-12 21:21:22 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 21:21:24 - INFO - Mistral OCR processed 456 words across 3 pages with confidence: 0.95 in 2338.15ms
+2025-05-12 21:27:33 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 21:27:35 - INFO - Mistral OCR processed 456 words across 3 pages with confidence: 0.95 in 1968.10ms
+2025-05-12 21:34:25 - INFO - Initialized OCR merger with strategy: highest_confidence
+2025-05-12 21:34:29 - INFO - Mistral OCR processed 456 words across 3 pages with confidence: 0.95 in 4046.80ms
+2025-05-13 12:43:54 - INFO - Mistral OCR processed 848 words across 2 pages with confidence: 0.95 in 2816.24ms
